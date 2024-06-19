@@ -1,0 +1,148 @@
+{
+  "custumers": [
+    {
+      "id": "87cd",
+      "name": "Andrea Bonna",
+      "paymentType": "PostePay",
+      "notes": "confermato"
+    },
+    {
+      "id": "be05",
+      "name": "Giovanni Gialli",
+      "paymentType": "Banca",
+      "notes": "Annulato"
+    },
+    {
+      "società": "FIBA",
+      "paymentType": "PostePay",
+      "notes": "confermato",
+      "name": "chiara",
+      "cognome": "Gialli",
+      "partita": "CHARG50ALLR439S",
+      "email": "chiara.gialli@gmail.com",
+      "telefono": "3381772634",
+      "indirizzo": "via Manzoni 98A",
+      "comune": "Esine",
+      "id": "6098"
+    },
+    {
+      "id": "6942",
+      "name": "Rino Gaetano",
+      "paymentType": "Bonifico",
+      "notes": "Confermato"
+    },
+    {
+      "id": "84cd",
+      "name": "Elena Esposito",
+      "paymentType": "Poste",
+      "notes": "non dichiarato"
+    },
+    {
+      "id": "87c9",
+      "name": "Mario Rossi",
+      "paymentType": "Banca",
+      "notes": "Confermato"
+    },
+    {
+      "id": "2852",
+      "name": "Alice",
+      "paymentType": "Bonifico",
+      "notes": "Confermato"
+    },
+    {
+      "società": "AIDO",
+      "paymentType": "Accredito",
+      "notes": "non confermato",
+      "name": "Luigia",
+      "cognome": "Antonietta",
+      "partita": "EDETTDL09D676D",
+      "email": "luigina.andotnietta@libero.it",
+      "telefono": "2263341523",
+      "indirizzo": "via Roma 13",
+      "comune": "Pesaro",
+      "id": "88c9"
+    },
+    {
+      "id": "aa9f",
+      "name": "Piero",
+      "paymentType": "Banca",
+      "notes": "Confermato"
+    },
+    {
+      "id": "81c9",
+      "name": "Mario Rossi",
+      "paymentType": "Banca",
+      "notes": "Confermato"
+    },
+    {
+      "id": "a23f",
+      "name": "Piero",
+      "paymentType": "Banca",
+      "notes": "Confermato"
+    },
+    {
+      "id": "fa19",
+      "name": "Luca Verdi",
+      "paymentType": "Bancomat",
+      "notes": "confermato"
+    },
+    {
+      "id": "89c9",
+      "name": "Mario Rossi",
+      "paymentType": "Banca",
+      "notes": "Confermato"
+    },
+    {
+      "id": "9791",
+      "società": "Nurale",
+      "paymentType": "Bancomat",
+      "notes": "Confermato",
+      "name": "Filippo",
+      "cognome": "Rodari",
+      "partita": "ABSTRGD242SGE",
+      "email": "filippo.rodari@gmail.com",
+      "telefono": "3381441592",
+      "indirizzo": "Via Manzoni 89E",
+      "comune": "Esine"
+    },
+    {
+      "id": "ac55",
+      "società": "AIDO",
+      "paymentType": "Accredito",
+      "notes": "non confermato",
+      "name": "Luigia",
+      "cognome": "Antonietta",
+      "partita": "EDETTDL09D676D",
+      "email": "luigina.andotnietta@libero.it",
+      "telefono": "2263341523",
+      "indirizzo": "via Roma 13",
+      "comune": "Pesaro"
+    },
+    {
+      "id": "1fec",
+      "società": "Terranova",
+      "paymentType": "Banca",
+      "notes": "confermato",
+      "name": "Claudio",
+      "cognome": "Bisio",
+      "partita": "CADOBSIO68281B",
+      "email": "claudio.bisio@gmail.com",
+      "telefono": "3872216728",
+      "indirizzo": "Via Statale 28E",
+      "comune": "Roma"
+    },
+    {
+      "id": "80fc",
+      "società": "Nurale",
+      "name": "Giorgio",
+      "cognome": "Giovanni",
+      "partita": "GRG3453DSFE3",
+      "email": "giovanniGiorgio@gmial.com",
+      "telefono": "3362273451",
+      "indirizzo": "Via Trottoli 15",
+      "comune": "Artogne",
+      "paymentType": "Bonifico",
+      "notes": "confermato"
+    }
+  ]
+}
