@@ -3,6 +3,7 @@ import ModalFiltri from "./modalFiltri";
 import { Customers } from "../../../store/customers/types";
 import { Suppliers } from "../../../store/suppliers/types";
 import { Resources } from "../../../store/resources/types";
+import { SkillResources } from "../../../store/skillResource/types";
 
 interface FilterModalProps {
     open: boolean;
@@ -10,6 +11,7 @@ interface FilterModalProps {
     customers?: Customers[];
     suppliers?: Suppliers[];
     resources? : Resources[];
+    skillResources? : SkillResources[];
     filterValues: {
         name: string;
         typeOfPayment: string; 
@@ -21,7 +23,7 @@ interface FilterModalProps {
     darkMode: boolean;
 }
 
-const FilterModal = ({ open, onClose, customers, filterValues, handleFilterChange, handleFilterSubmit, removeFilterSubmit, darkMode }: FilterModalProps) => {
+const FilterModal = ({ open, onClose, customers, suppliers, filterValues, handleFilterChange, handleFilterSubmit, removeFilterSubmit, darkMode }: FilterModalProps) => {
     return (
         <ModalFiltri show={open} className={`fixed inset-0 flex items-center justify-center z-50 ${darkMode ? 'bg-opacity-50' : 'bg-opacity-50'}`}>
             <div className={`rounded-xl max-w-md w-full flex-col items-center justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
@@ -37,6 +39,9 @@ const FilterModal = ({ open, onClose, customers, filterValues, handleFilterChang
                         {[...new Set(customers?.map((customer) => customer.typeOfPayment.name))].map((paymentType) => (
                             <option key={paymentType} value={paymentType}>{paymentType}</option>
                         ))}
+                        {[...new Set(suppliers?.map((supplier) => supplier.typeOfPaymentId))].map((paymentType) => (
+                            <option key={paymentType} value={paymentType}>{paymentType}</option>
+                        ))}
                     </select>
                     <div className="justify-center text-center mt-2">
                         <button onClick={removeFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 mr-4 ${darkMode ? 'bg-gray-500 text-white' : 'bg-gray-500 text-white'}`}>Svuota Filtri</button>
@@ -49,3 +54,6 @@ const FilterModal = ({ open, onClose, customers, filterValues, handleFilterChang
 }
 
 export default FilterModal;
+
+
+

@@ -20,7 +20,7 @@ const Navbar = ({name}: Props) => {
     };
 
     return (
-        <nav className={`flex justify-between items-center h-12 bg-gradient-to-r rounded-r-lg from-pink-600 from-10% via-blue-950 via-30% to-white to-50% dark:to-black`}>
+        <nav className={`flex justify-between items-center h-auto bg-gradient-to-r rounded-r-lg from-pink-600 from-10% via-blue-950 via-30% to-white to-50% dark:to-black`}>
             <div className="ml-4">
               <h1 className='font-lato text-xl text-white'>{name}</h1>
             </div>

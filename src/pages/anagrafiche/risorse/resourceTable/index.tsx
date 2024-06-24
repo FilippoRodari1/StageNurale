@@ -46,7 +46,7 @@ const ResourceTable= ({ currentResources, handleModalOpen, handleDeleteConfirmat
                         <td className="text-left px-4 py-2"> {resources.hourCost} €</td>
                         <td className="text-left px-4 py-2"> {resources.hourRevenue} €</td>
                         <td className="text-left px-4 py-2"> {resources.curriculumVitae}</td>
-                        <td className="text-left px-4 py-2"> {resources.supplierId}</td>
+                        <td className="text-left px-4 py-2"> {resources.supplier ? resources.supplier.name : ' '}</td>
                         <td className="text-left px-10 py-2"> {resources.note}</td>
                         <td className="text-right px-8 py-2">
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(resources.id!)}><IconSvg name="modifica" /></button>

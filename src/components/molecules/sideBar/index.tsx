@@ -23,6 +23,7 @@ const SideBar = ({ links, currentLink, isSidebarOpen, isDarkMode, toggleDarkMode
         Vendite: false,
         Scadenziario: false,
         Settings: false,
+        Timesheet : false,
     });
 
     const navigate = useNavigate();
@@ -40,11 +41,11 @@ const SideBar = ({ links, currentLink, isSidebarOpen, isDarkMode, toggleDarkMode
 
     return (
         <div className={`font-lato relative h-full ${isSidebarOpen ? 'w-64' : 'w-16'}`}>
-            <ul className="mt-8 h-full">
+            <ul className="mt-6 h-full">
                 {links.map((link, index) => {
                     if (link.name === 'Dark Mode') {
                         return (
-                            <li key={index} className="relative mt-2 ml-4 flex items-center">
+                            <li key={index} className="relative mt-1 ml-4 flex items-center">
                                 <span className="text-base">{isDarkMode ? '🌙' : '☀️'}</span>
                                 {isSidebarOpen && (
                                     <label className="inline-flex items-center cursor-pointer ml-4">

@@ -5,7 +5,7 @@ import { Suppliers } from "../../../../store/suppliers/types";
 interface SuppliersTableProps {
     currentSuppliers: Suppliers[];
     handleModalOpen: (id: number) => void;
-    handleDeleteConfirmation: (customer: Suppliers) => void;
+    handleDeleteConfirmation: (suppliers: Suppliers) => void;
     isDarkMode: boolean;
 }
 

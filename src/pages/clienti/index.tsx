@@ -203,6 +203,7 @@ const Clienti = () => {
                             darkMode={isDarkMode}
                         />
                     )}
+
                     {isDeleteModalOpen && customerToDelete && (
                         <ModalDelete show={isDeleteModalOpen} onClick={() => setIsDeleteModalOpen(false)} className="bg-white rounded-xl p-8 max-w-md w-full flex flex-col items-center justify-center">
                             <div className="bg-white rounded-lg p-6 max-w-md w-full flex flex-col items-center justify-center">
@@ -218,6 +219,7 @@ const Clienti = () => {
                             </div>
                         </ModalDelete>
                     )}
+
                     <div className="overflow-auto h-full font-lato">
                         <CustomerTable
                             currentCustomers={currentCustomers as Customers[]}
@@ -226,7 +228,8 @@ const Clienti = () => {
                             handleDeleteConfirmation={handleDeleteConfirmation}
                             isDarkMode={isDarkMode}
                         />
-                    </div>      
+                    </div> 
+                         
                     <div>
                         <CustomersModal 
                             open={open} 

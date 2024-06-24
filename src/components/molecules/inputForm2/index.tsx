@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 interface Props {
     title: string;
     name: string;
-    type: "text" | "password" | "email" | "number";
+    type: "text" | "password" | "email" | "number" | "date";
     placeholder: string;
     password?: boolean;
     onChange?: any

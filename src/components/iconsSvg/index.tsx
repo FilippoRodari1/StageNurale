@@ -13,10 +13,11 @@ import TickTrue from "./tickTrue";
 import XDelete from "./xDelete";
 import User from "./user";
 import Campanello from "./campanello";
+import Timesheet from "./timesheet";
 
 
 interface Props {
-  name: "home" | "clienti" | "fornitori" | "risorse" | "skills" | "tipoDiPagamento" | "impostazioni" | "logout" | "occhio" | "modifica" | "delete" | "tickTrue" | "xDelete" | "user" | "campanello";
+  name: "home" | "clienti" | "fornitori" | "risorse" | "skills" | "tipoDiPagamento" | "impostazioni" | "logout" | "occhio" | "modifica" | "delete" | "tickTrue" | "xDelete" | "user" | "campanello" | "timesheet";
   color?: string;
   width?: number;
   height?: number;
@@ -39,7 +40,8 @@ const IconSvg = ({ name, color, width, height }: Props) => {
     tickTrue : TickTrue,
     xDelete : XDelete,
     user : User,
-    campanello : Campanello
+    campanello : Campanello,
+    timesheet : Timesheet
   };
 
   const IconComponent = icons[name];

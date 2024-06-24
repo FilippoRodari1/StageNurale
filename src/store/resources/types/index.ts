@@ -5,6 +5,9 @@ export interface QueryParams {
 }
 
 export interface Resources {
+    level: any;
+    skill: any;
+    typeOfPaymentId: any;
     id: number;
     firstName : string,
     lastName: string,
@@ -12,6 +15,10 @@ export interface Resources {
     hourRevenue: number,
     curriculumVitae: string,
     supplierId: number;
+    supplier: {
+        id: number,
+        name: string
+    }
     note: string
 }
 

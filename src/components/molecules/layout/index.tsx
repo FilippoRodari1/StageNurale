@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import SideBar from '../sideBar';
 import IconSvg from '../../iconsSvg';
-import { HOME, RISORSE, COMMESSE, CLIENTI, SKILLS,  LOGIN, ATTIVITA, ORDINI, FORNITORI, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE} from '../../../utils/constants';
+import { HOME, RISORSE, COMMESSE, CLIENTI, SKILLS,  LOGIN, ATTIVITA, ORDINI, FORNITORI, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE, TIMESHEET, REPORT} from '../../../utils/constants';
 
 const SIDEBAR = (isDarkMode: boolean) => [
     { name: 'Home', icon: <IconSvg name="home"/>, link: HOME, className: 'text-pink-500' },
@@ -58,6 +58,14 @@ const SIDEBAR = (isDarkMode: boolean) => [
             { name: 'Utenti', link: UTENTI },
         ]
     },
+    {
+        name: 'Timesheet', 
+        icon: <IconSvg name="timesheet" color={isDarkMode ? 'white' : 'black'} />, 
+        sublinks: [
+            { name: 'timesheet', link: TIMESHEET },
+            { name: 'Report', link: REPORT },
+        ]
+    },
 ];
 
 const SIDEBARBASSA = (isDarkMode: boolean) => [
@@ -92,7 +100,7 @@ const Layout = () => {
                     <img src={logo} className="h-[50px] mt-6 mx-auto" />
                 )}
                 <hr className={`border-solid ${isDarkMode ? 'border-white' : 'border-black'} ml-8 mr-8`} />
-                <div className="flex-grow overflow-y-auto overflow-x-hidden custom-scrollbar">
+                <div className="flex-grow overflow-y-auto  custom-scrollbar ">
                     <SideBar 
                         links={SIDEBAR(isDarkMode)} 
                         currentLink={location.pathname} 

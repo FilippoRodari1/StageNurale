@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchResources } from "./actions";
 import { InitalStateResources } from "./types";
 import {LOADING} from "../types"
+import { fetchResources } from "./actions";
 
 const initialState : InitalStateResources = {
     data:[],

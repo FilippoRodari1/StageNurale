@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, RESOURCES, V1 } from "../../../utils/constants";
-import { RootState, fetchResources, useAppDispatch } from "../../../store";
+import { RootState, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Resources } from "../../../store/resources/types";
@@ -15,6 +15,7 @@ import ResourceTable from "./resourceTable";
 import ResourcesModal from "./resourceModal";
 import { createResources } from "../../../store/resources/resource/createResource";
 import { deletResources } from "../../../store/resources/resource/deleteResouces";
+import { fetchResources } from "../../../store/resources/actions/fetchResources";
 
 const URL_RESOURCES = `${BASE}${API}${V1}${RESOURCES}`;
 

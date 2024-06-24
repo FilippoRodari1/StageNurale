@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import InputForm2 from "../../molecules/inputForm2";
 import Modal from ".";
-import { Customers } from "../types/customerTypes";
+import { Customers } from "../../../store/customers/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import validationsSchema from "../../../validations";
 
