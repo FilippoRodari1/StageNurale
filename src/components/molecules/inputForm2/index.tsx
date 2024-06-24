@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Label from '../../atoms/Label';
 import { useFormContext } from 'react-hook-form';
+import Label from '../../atoms/Label';
 
 interface Props {
     title: string;
@@ -8,13 +8,14 @@ interface Props {
     type: "text" | "password" | "email" | "number" | "date";
     placeholder: string;
     password?: boolean;
-    onChange?: any
     className?: string;
+    value?: any;
+    onChange?: any
 }
 
-const InputForm2 = ({ title, name, password = false, type, placeholder}: Props) => {
+const InputForm2 = ({ title, name, password = false, type, placeholder, className }: Props) => {
     const [showPassword, setShowPassword] = useState(false);
-    const { register, formState } = useFormContext();
+    const { register, formState } = useFormContext() || {};
     const error = formState?.errors?.[name]?.message || '';
 
     const handleClickPasswordVisibility = () => {
@@ -26,10 +27,10 @@ const InputForm2 = ({ title, name, password = false, type, placeholder}: Props) 
             <Label title={title} />
             <div className='relative'>
                 <input 
-                    {...register(name)}
+                    {...(register ? register(name) : {})}
                     type={password && showPassword ? "text" : type} 
                     placeholder={placeholder} 
-                    className="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-400 rounded-l-[10px] rounded-r-[10px] rounded-md pl-2"
+                    className={`appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-400 rounded-l-[10px] rounded-r-[10px] rounded-md pl-2 ${className}`}
                 /> 
                 {password && (
                     <div 

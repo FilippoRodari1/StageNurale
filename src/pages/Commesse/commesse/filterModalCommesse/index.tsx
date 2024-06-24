@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 import { Jobs } from "../../../../store/commesse/types";
 import ModalFiltri from "../../../../components/atoms/modal/modalFiltri";
+import InputForm2 from "../../../../components/molecules/inputForm2";
 
 interface FilterModalProps {
     open: boolean;
@@ -28,50 +29,43 @@ const FilterModalCommesse = ({
             <div className="bg-white rounded-lg p-6 max-w-md w-full">
                 <h2 className="text-xl font-bold mb-4">Filtri</h2>
                 <div className="mb-4">
-                    <label className="block text-gray-700 mb-2">Codice</label>
-                    <input
+                    <InputForm2
                         type="text"
                         name="codice"
                         value={filterValues.codice}
                         onChange={handleFilterChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded" 
+                        title={"Codice"} 
+                        placeholder={"Codice"}                    
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 mb-2">Cliente</label>
-                    <input
+                    <InputForm2
                         type="text"
                         name="cliente"
                         value={filterValues.cliente}
                         onChange={handleFilterChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded" 
+                        title={"Cliente"} 
+                        placeholder={"Cliente"}                    
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 mb-2">Descrizione</label>
-                    <input
+                    <InputForm2
                         type="text"
                         name="descrizione"
                         value={filterValues.descrizione}
                         onChange={handleFilterChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded" 
+                        title={"Descrizione"} 
+                        placeholder={"Descrizione"}                    
                     />
                 </div>
-                <div className="flex justify-end">
-                    <button
-                        onClick={removeFilterSubmit}
-                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
-                    >
-                        Rimuovi Filtri
-                    </button>
-                    <button
-                        onClick={handleFilterSubmit}
-                        className="bg-pink-500 text-white px-4 py-2 rounded"
-                    >
-                        Applica Filtri
-                    </button>
+                <div className="justify-center text-center mt-2">
+                        <button onClick={removeFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 mr-4 ${darkMode ? 'bg-gray-500 text-white' : 'bg-gray-500 text-white'}`}>Svuota Filtri</button>
+                        <button onClick={handleFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 ${darkMode ? 'bg-pink-500 text-white' : 'bg-pink-500 text-white'}`}>Applica</button>
+                    </div>
                 </div>
-            </div>
         </ModalFiltri>
     );
 };
