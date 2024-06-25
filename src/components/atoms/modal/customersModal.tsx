@@ -21,12 +21,9 @@ const CustomersModal = ({ open, handleModalClose, handleSave, editingId, darkMod
         const isError = await methods.trigger();
         if (!isError) {
             const data = methods.getValues();
-            const timestamp = new Date().toISOString();
             const customerData: Customers = {
                 ...data,
                 typeOfPaymentId: Number(data.typeOfPaymentId),
-                createdAt: timestamp,
-                updatedAt: timestamp,
             };
             handleSave(customerData);
             methods.reset();

@@ -18,31 +18,33 @@ export const validationsSchemaResource = z.object({
 });
 
 export const validationsSchemaFatturaAcquisto = z.object({
-    data: z.string().min(1,{ message: "Data is required" }),
-    operationDate: z.string().min(1,{ message: "Date is required" }),
-    supplierId: z.string().min(1,{ message: "supplier is required" }),
-    typeOfPaymentId: z.string().min(1,{ message: "tipo di pagamento is required" }),
-    state: z.string().min(1,{ message: "Stato is required" }),
-    note: z.string().min(1,{ message: "Note is required" }),
-    vatValue: z.string().min(1,{ message: "vatValue is required" }),
-    netValue: z.string().min(1,{ message: "netValue is required" }),
-    grossValue: z.string().min(1,{ message: "grossValue is required" }),
-
+    code: z.string(),
+    operationDate: z.string().refine(val => !isNaN(Date.parse(val)), {
+        message: "Invalid date format",
+    }),
+    supplierId: z.number().int(),
+    typeOfPaymentId: z.number().int(),
+    state: z.string(),
+    note: z.string().optional(),
+    netValue: z.number(),
+    vatValue: z.number(),
+    grossValue: z.number(),
 });
+
 
 export const validationsSchemaCommesse = z.object({
-    code: z.string().min(1,{ message: "Code is required" }),
-    description: z.string().min(1,{ message: "Descrizione is required" }),
-    customerId: z.string().min(1,{ message: "Customer is required" }),
-    startDate: z.string().min(1,{ message: "startDate is required" }),
-    endDate: z.string().min(1,{ message: "endDate is required" }),
-    estimatedCost: z.string().min(1,{ message: "estimatedCost is required" }),
-    estimatedRevenue: z.string().min(1,{ message: "estimatedRevenue is required" }),
-    note: z.string().min(1,{ message: "note is required" }),
-    jobType: z.string().min(1,{ message: "jobType is required" }),
-    state: z.string().min(1,{ message: "State is required" }),
-
+    code: z.string().min(1, { message: "Code must be longer than or equal to 1 character" }),
+    description: z.string().min(1, { message: "Description must be longer than or equal to 1 character" }),
+    customerId: z.number({ invalid_type_error: "Customer ID must be a number" }).positive("Customer ID must be a positive number"),
+    startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Start date must be a valid ISO 8601 date string" }),
+    endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { message: "End date must be a valid ISO 8601 date string" }),
+    estimatedCost: z.number({ invalid_type_error: "Estimated cost must be a number" }).positive("Estimated cost must be a positive number"),
+    estimatedRevenue: z.number({ invalid_type_error: "Estimated revenue must be a number" }).positive("Estimated revenue must be a positive number"),
+    note: z.string().optional(),
+    jobType: z.string().min(1, { message: "Code must be longer than or equal to 1 character" }),
+    state: z.string().min(1, { message: "Code must be longer than or equal to 1 character" }),
 });
+
 
 export const validationsSchemaActivities= z.object({
     jobId: z.string().min(1,{ message: "commessa is required" }),

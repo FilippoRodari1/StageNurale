@@ -1,17 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API, BASE, SUPPLIERS, V1 } from "../../../utils/constants";
+import { apiClient } from '../../../utils/Helpers';
 
-const URL_SUPPLIERS = `${BASE}${API}${V1}${SUPPLIERS}`;
 
 export const deleteSuppliers = createAsyncThunk(
     'suppliers/deleteSuppliers',
     async (id: number, thunkAPI) => {
         try {
-            const response = await fetch(`${URL_SUPPLIERS}/${id}`, { method: 'DELETE' });
+            const response = await apiClient.delete({ url: `${BASE}${API}${V1}${SUPPLIERS}/${id}`});
             if (!response.ok) {
                 throw new Error(`Error status: ${response.status}`);
             }
-            return id;
+            
+            if(response.ok) {
+                return response.data
+            }
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.message);
         }

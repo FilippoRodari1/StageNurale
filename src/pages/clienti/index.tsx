@@ -15,14 +15,13 @@ import { Customers } from "../../store/customers/types";
 
 import ModalDelete from "../../components/atoms/modal/modalDelete";
 
-import { API, BASE, CUSTOMERS, V1 } from "../../utils/constants";
 import { RootState, fetchCustomers, useAppDispatch } from "../../store";
 import { createCustomers } from "../../store/customer/actions/createCustomer";
 import { deleteCustomers } from "../../store/customer/actions/deleteCustomer";
 import Navbar from "../../components/molecules/navBar";
+import { updateCustomer } from "../../store/customer/updateCustomer";
 
 
-const URL_CUSTOMERS = `${BASE}${API}${V1}${CUSTOMERS}`;
 
 const Clienti = () => {
     const [open, setOpen] = useState(false);
@@ -91,22 +90,11 @@ const Clienti = () => {
 
     const updateData = async (id: number, updatedCustomer: Customers) => {
         try {
-            const response = await fetch(`${URL_CUSTOMERS}/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedCustomer)
-            });
-            if (!response.ok) {
-                throw new Error(`error status: ${response.status}`);
-            }
-            const data = await response.json();
-            dispatch(fetchCustomers());
-            return data;
+            await dispatch(updateCustomer({ id, updatedCustomer }));
         } catch (error: any) {
             console.error("Error updating data:", error);
             setErrorMessage('È stato riscontrato un errore');
             setErrorDetails(`Dettagli tecnici dell'errore: ${error.message}`);
-            throw error;
         }
     };
     

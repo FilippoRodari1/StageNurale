@@ -13,8 +13,8 @@ import IconSvg from "../../../components/iconsSvg";
 import ModalDelete from "../../../components/atoms/modal/modalDelete";
 import SupplierTable from "./suppliersTable";
 import SuppliersModal from "./suppliersModal";
-import { createSuppliers } from "../../../store/supplier/actions/createSupplier";
-import { deleteSuppliers } from "../../../store/supplier/actions/deleteSupplier";
+import { createSuppliers } from "../../../store/suppliers/supplier/createSupplier";
+import { deleteSuppliers } from "../../../store/suppliers/supplier/deleteSupplier";
 
 const URL_SUPPLIERS = `${BASE}${API}${V1}${SUPPLIERS}`;
 

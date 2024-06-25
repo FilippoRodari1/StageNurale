@@ -1,7 +1,7 @@
 import { LOADING } from "../../types";
 
 export interface QueryParams{
-    typeOfPaymentId?: number;
+    typeOfPaymentId: number;
 
 }
 

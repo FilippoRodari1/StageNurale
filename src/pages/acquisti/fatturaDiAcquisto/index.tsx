@@ -13,8 +13,7 @@ import FatturaAcquistoTable from "./fatturaAcquistoTable";
 import { PurchaseInvoice } from "../../../store/acquisti/types";
 import { validationsSchemaFatturaAcquisto } from "../../../validations";
 import { createFattureAcquisti } from "../../../store/acquisti/fattureAcquisti/actions/createFatturaAcquisto";
-import { deleteFattureAcquisti } from "../../../store/acquisti/fattureAcquisti/deleteFattureAcquisti";
-
+import { deleteFattureAcquisti } from "../../../store/acquisti/fattureAcquisti/actions/deleteFattureAcquisti";
 const URL_FATTURADIACQUISTO = `${BASE}${API}${V1}${FATTURADIACQUISTO}`;
 
 const FatturaAcquisto = () => {

@@ -1,5 +1,5 @@
 import IconSvg from "../../iconsSvg";
-import { Customers } from "../types/customerTypes";
+import { Customers } from "../../../store/customers/types";
 
 interface CustomerTableProps {
     currentCustomers: Customers[];
