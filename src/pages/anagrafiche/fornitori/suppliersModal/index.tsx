@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Modal from "../../../../components/atoms/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Suppliers } from "../../../../store/suppliers/types";
-import validationsSchema from "../../../../validations";
+import { validationsSchemaSuppliers } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 
 
@@ -15,7 +15,7 @@ interface SuppliersModalProps {
 }
 
 const SuppliersModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: SuppliersModalProps) => {
-    const methods = useForm<Suppliers>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Suppliers>({ resolver: zodResolver(validationsSchemaSuppliers) });
     console.log(methods.getValues());
 
     const handleFormSubmit = async () => {
@@ -40,15 +40,15 @@ const SuppliersModal = ({ open, handleModalClose, handleSave, editingId, darkMod
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Nome" name="name" type="text" placeholder="Nome Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Nome" name="name" type="text" placeholder="Nome Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="typeOfPaymentId" title="Tipo di pagamento" type="number" placeholder="tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="typeOfPaymentId" title="Tipo di pagamento" type="number" placeholder="tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div> 
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
                             <div className="md:w-full md:pl-4">
-                                <InputForm2 title="Note" name="note" type="text" placeholder="note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Note" name="note" type="text" placeholder="note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex justify-end mt-auto ml-12 mx-4">

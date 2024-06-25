@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Suppliers } from "../../../store/suppliers/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validationsSchema from "../../../validations";
+import { validationsSchemaSuppliers } from "../../../validations";
 import ErrorBar from "../../../components/molecules/errorBar";
 import Navbar from "../../../components/molecules/navBar";
 import FilterModal from "../../../components/atoms/modal/filterModal";
@@ -34,7 +34,7 @@ const Fornitori = () => {
     const suppliersPerPage = 8;
     const dispatch = useAppDispatch();
 
-    const methods = useForm<Suppliers>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Suppliers>({ resolver: zodResolver(validationsSchemaSuppliers) });
 
     const suppliers = useSelector((state: RootState) => state.suppliers.data);
 

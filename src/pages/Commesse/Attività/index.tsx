@@ -4,7 +4,7 @@ import { RootState, fetchAttività, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validationsSchema from "../../../validations";
+import { validationsSchemaActivities } from "../../../validations";
 import ErrorBar from "../../../components/molecules/errorBar";
 import Navbar from "../../../components/molecules/navBar";
 import IconSvg from "../../../components/iconsSvg";
@@ -41,7 +41,7 @@ const AttivitaPage = () => {
     const attivitaPerPage = 8;
     const dispatch = useAppDispatch();
 
-    const methods = useForm<Activities>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Activities>({ resolver: zodResolver(validationsSchemaActivities) });
 
     const attivita = useSelector((state: RootState) => state.activities.data); 
 

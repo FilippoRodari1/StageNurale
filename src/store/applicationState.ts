@@ -8,6 +8,7 @@ import { sliceSkillsResources } from "./skillResource"
 import { sliceCommesse } from "./commesse"
 import { sliceOrders } from "./orders"
 import { sliceAttività } from "./attività"
+import { sliceFatturaAcquisti } from "./acquisti"
 
 const rootReducer = combineReducers({
     counter: sliceCounter.reducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     skillResource : sliceSkillsResources.reducer,
     orders : sliceOrders.reducer,
     commesse : sliceCommesse.reducer,
-    activities : sliceAttività.reducer
+    activities : sliceAttività.reducer,
+    purchaseInvoice : sliceFatturaAcquisti.reducer,
 })
 
 export default rootReducer

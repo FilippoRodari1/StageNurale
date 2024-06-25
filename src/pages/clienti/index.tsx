@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import validationsSchema from '../../../src/validations';
+import { validationsSchema } from "../../validations";
 
 import FilterModal from "../../components/atoms/modal/filterModal";
 import CustomerTable from "../../components/atoms/table/customersTable";
@@ -179,7 +179,7 @@ const Clienti = () => {
                 />
             )}
 
-            <Navbar name="CLIENTI"/>
+            <Navbar name="Clienti"/>
 
             <div className="w-full flex justify-between items-center mt-10 mb-1 mx-4">
                 <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => handleModalOpen()}>+ Aggiungi nuovo </button>

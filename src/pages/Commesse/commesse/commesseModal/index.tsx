@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Modal from "../../../../components/atoms/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Jobs } from "../../../../store/commesse/types";
-import validationsSchema from "../../../../validations";
+import { validationsSchemaCommesse } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 
 interface CommessaModalProps {
@@ -14,7 +14,7 @@ interface CommessaModalProps {
 }
 
 const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: CommessaModalProps) => {
-    const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchemaCommesse) });
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -38,42 +38,42 @@ const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Codice" name="code" type="text" placeholder="Codice Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Codice" name="code" type="text" placeholder="Codice Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="description" title="Descrizione" type="text" placeholder="Descrizione Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="description" title="Descrizione" type="text" placeholder="Descrizione Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div> 
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Cliente" name="supplierId" type="number" placeholder="Cliente" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Cliente" name="supplierId" type="number" placeholder="Cliente" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="startDate" title="Data Inizio" type="date" placeholder="Data Inizio" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
-                            </div>
-                        </div>
-                        <div className="flex flex-col md:flex-row mt-[5px]">
-                            <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="endDate" title="Data Fine" type="date" placeholder="Data Fine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
-                            </div>
-                            <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="hourCost" title="Costo Stimato" type="number" placeholder="Costo Stimato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="startDate" title="Data Inizio" type="date" placeholder="Data Inizio" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="hourRevenue" title="Ricavo Stimato" type="number" placeholder="Ricavo Stimato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="endDate" title="Data Fine" type="date" placeholder="Data Fine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="note" title="Note" type="text" placeholder="Note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="hourCost" title="Costo Stimato" type="number" placeholder="Costo Stimato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="orderType" title="Tipo di Commessa" type="text" placeholder="Tipo di Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="hourRevenue" title="Ricavo Stimato" type="number" placeholder="Ricavo Stimato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="status" title="Stato" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="note" title="Note" type="text" placeholder="Note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row mt-[5px]">
+                            <div className="ml-4 md:w-3/5">
+                                <InputForm2 name="orderType" title="Tipo di Commessa" type="text" placeholder="Tipo di Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                            </div>
+                            <div className="ml-4 md:w-3/5">
+                                <InputForm2 name="status" title="Stato" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex justify-end mt-auto ml-12 mx-4">

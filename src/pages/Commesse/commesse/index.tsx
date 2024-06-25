@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Jobs } from "../../../store/commesse/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validationsSchema from "../../../validations";
+import { validationsSchemaCommesse } from "../../../validations";
 import ErrorBar from "../../../components/molecules/errorBar";
 import Navbar from "../../../components/molecules/navBar";
 import IconSvg from "../../../components/iconsSvg";
@@ -34,7 +34,7 @@ const CommessePage = () => {
     const commessePerPage = 8;
     const dispatch = useAppDispatch();
 
-    const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchemaCommesse) });
 
     const commesse = useSelector((state: RootState) => state.commesse.data);
 

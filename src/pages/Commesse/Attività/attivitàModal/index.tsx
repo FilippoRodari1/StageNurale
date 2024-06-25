@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import Modal from "../../../../components/atoms/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validationsSchema from "../../../../validations";
+import { validationsSchemaActivities } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { Activities } from "../../../../store/attività/types";
 
@@ -14,7 +14,7 @@ interface ActivitiesModalProps {
 }
 
 const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: ActivitiesModalProps) => {
-    const methods = useForm<Activities>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Activities>({ resolver: zodResolver(validationsSchemaActivities) });
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -38,34 +38,34 @@ const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMo
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Commessa" name="code" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Commessa" name="code" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="Ordine" title="Ordine" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="Ordine" title="Ordine" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div> 
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Risorsa" name="resources" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 title="Risorsa" name="resources" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="startDate" title="Data Inizio" type="date" placeholder="Data Inizio" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="startDate" title="Data Inizio" type="date" placeholder="Data Inizio" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="endDate" title="Data Fine" type="date" placeholder="Data Fine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="endDate" title="Data Fine" type="date" placeholder="Data Fine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="workedHours" title="Ore Lavorate" type="number" placeholder="Ore Lavorate" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="workedHours" title="Ore Lavorate" type="number" placeholder="Ore Lavorate" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="state" title="Stato" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="state" title="Stato" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-full">
-                                <InputForm2 name="note" title="Note" type="text" placeholder="Note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`} />
+                                <InputForm2 name="note" title="Note" type="text" placeholder="Note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                         </div>
                         <div className="flex justify-end mt-auto ml-12 mx-4">

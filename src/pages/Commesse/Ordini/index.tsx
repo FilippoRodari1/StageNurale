@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Orders } from "../../../store/orders/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validationsSchema from "../../../validations";
+import { validationsSchemaOrders } from "../../../validations";
 import ErrorBar from "../../../components/molecules/errorBar";
 import Navbar from "../../../components/molecules/navBar";
 import IconSvg from "../../../components/iconsSvg";
@@ -34,7 +34,7 @@ const OrdersPage = () => {
     const ordersPerPage = 8;
     const dispatch = useAppDispatch();
 
-    const methods = useForm<Orders>({ resolver: zodResolver(validationsSchema) });
+    const methods = useForm<Orders>({ resolver: zodResolver(validationsSchemaOrders) });
 
     const orders = useSelector((state: RootState) => state.orders.data);
 

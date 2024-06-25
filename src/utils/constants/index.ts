@@ -5,7 +5,7 @@ export const FORNITORI = '/Fornitori';
 export const CLIENTI = '/Clienti';
 export const IMPOSTAZIONI = '/impostazioni';
 export const ORDINI = '/ordini';
-export const FATTURADIACQUISTO = '/fatturaDiAcquisto';
+export const FATTURADIACQUISTO = '/purchase-invoice';
 export const FATTURADIACQUISTOATTIVITA = '/fatturaDiAcquistoAttività';
 export const FATTUREVENDITA = '/fattureVendita';
 export const SCADENZE = '/scadenze';
@@ -19,15 +19,14 @@ export const REPORT = '/report';
 
 
 
-export const NUOVOCLIENTE = '/nuovoCliente'
+export const NUOVOCLIENTE = '/nuovoCliente';
 export const CUSTOMERS = '/customers';
 export const COMMESSE = '/jobs';
 export const ORDERS = '/orders';
 export const SUPPLIERS = '/suppliers';
 export const RESOURCES = '/resources';
-export const SKILLSRISORSE = '/resource-skills'
+export const SKILLSRISORSE = '/resource-skills';
 export const ATTIVITA = '/activities';
-
 
 export const BASE = 'https://dev.nurale.com'
 export const API = '/api';
