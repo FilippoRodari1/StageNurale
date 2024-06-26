@@ -21,7 +21,10 @@ const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode
         if (!isError) {
             const data = methods.getValues();
             const orderData: Jobs = {
-                ...data
+                ...data,
+                customerId: Number(data.customerId),
+                estimatedCost: Number(data.estimatedCost),
+                estimatedRevenue: Number(data.estimatedRevenue),
             };
             handleSave(orderData);
             methods.reset();
@@ -91,5 +94,5 @@ const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode
     );
 }
 
-export default CommessaModal;
+export default CommessaModal;  
 

@@ -9,6 +9,9 @@ import { sliceCommesse } from "./commesse"
 import { sliceOrders } from "./orders"
 import { sliceAttività } from "./attività"
 import { sliceFatturaAcquisti } from "./acquisti"
+import { sliceFatturaAcquistiAttività } from "./fattureAcquistiAttività"
+import { sliceFattureVendita } from "./fattureVendite"
+import { sliceUsers } from "./utenti"
 
 const rootReducer = combineReducers({
     counter: sliceCounter.reducer,
@@ -21,6 +24,9 @@ const rootReducer = combineReducers({
     commesse : sliceCommesse.reducer,
     activities : sliceAttività.reducer,
     purchaseInvoice : sliceFatturaAcquisti.reducer,
+    purchaseInvoiceActivity : sliceFatturaAcquistiAttività.reducer,
+    salesInvoice : sliceFattureVendita.reducer,
+    user : sliceUsers.reducer
 })
 
 export default rootReducer

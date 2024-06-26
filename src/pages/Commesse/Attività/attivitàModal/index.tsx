@@ -38,10 +38,10 @@ const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMo
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Commessa" name="code" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputForm2 title="Commessa" name="jobId" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="Ordine" title="Ordine" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputForm2 name="Ordine" title="order" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div> 
                             <div className="ml-4 md:w-3/5">
                                 <InputForm2 title="Risorsa" name="resources" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />

@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import Modal from "../../../../components/atoms/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { validationsSchemaResource } from "../../../../validations";
+import { validationSchemaSkillResource } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { SkillResources } from "../../../../store/skillResource/types";
 
@@ -15,7 +15,7 @@ interface SkillResourceModalProps {
 }
 
 const SkillResourcesModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: SkillResourceModalProps) => {
-    const methods = useForm<SkillResources>({ resolver: zodResolver(validationsSchemaResource) });
+    const methods = useForm<SkillResources>({ resolver: zodResolver(validationSchemaSkillResource) });
     console.log(methods.getValues());
 
     const handleFormSubmit = async () => {
@@ -40,13 +40,13 @@ const SkillResourcesModal = ({ open, handleModalClose, handleSave, editingId, da
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Risorsa" name="resource" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputForm2 title="Risorsa" name="resourceId" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="Skill" title="Skill" type="text" placeholder="Skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputForm2 name="SkillId" title="Skill" type="text" placeholder="Skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div> 
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="Livello" title="Livello" type="number" placeholder="Livello" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputForm2 name="level" title="Livello" type="number" placeholder="Livello" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div> 
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  

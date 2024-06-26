@@ -25,6 +25,7 @@ export interface Jobs {
 }
 
 export interface InitalStateJobs{
+    jobs: any;
     data: Jobs[],
     loading: LOADING,
     error: null | string;

@@ -1,9 +1,12 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { Orders } from "../../../../../store/orders/types";
+import { Orders } from "../../../../store/orders/types";
+import { validationsSchemaOrders } from "../../../../validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { validationsSchemaOrders } from "../../../../../validations";
-import Modal from "../../../../../components/atoms/modal";
-import InputForm2 from "../../../../../components/molecules/inputForm2";
+import Modal from "../../../../components/atoms/modal";
+import InputForm2 from "../../../../components/molecules/inputForm2";
+import InputFormCommesse from "../../../../components/molecules/inputFormCommesse";
+import InputFormRisorsa from "../../../../components/molecules/inputFormRisorsa";
+
 
 
 interface OrderModalProps {
@@ -63,7 +66,7 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="resource" title="Risorsa" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormRisorsa name="resource" title="Risorsa" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} resource={[]} />
                             </div>
                             <div className="ml-4 md:w-3/5">
                                 <InputForm2 name="dailyHours" title="Ore giornaliere allocate" type="number" placeholder="8" className={`text-right  appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
@@ -80,7 +83,7 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-full">
-                                <InputForm2 name="jobCode" title="Commessa" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormCommesse name="jobCode" title="Commessa" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} jobs={[]} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">

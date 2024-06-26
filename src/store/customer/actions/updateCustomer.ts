@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { apiClient } from '../../../utils/Helpers';
+import { Customers } from '../../customers/types';
+import { BASE, API, V1, CUSTOMERS } from '../../../utils/constants';
 
-import { API, BASE, CUSTOMERS, V1 } from "../../utils/constants";
-import { apiClient } from '../../utils/Helpers';
-import { Customers } from '../customers/types';
+
 
 export const updateCustomer = createAsyncThunk(
     'customers/updateCustomer',

@@ -12,9 +12,9 @@ import IconSvg from "../../../components/iconsSvg";
 import ModalDelete from "../../../components/atoms/modal/modalDelete";
 import FilterModalOrders from "./filterModalOrders";
 import OrderTable from "./ordersTable";
-import OrderModal from "./ordersModal/commesseModal";
 import { deleteOrders } from "../../../store/orders/order/deleteOrders";
 import { createOrders } from "../../../store/orders/order/createOrders";
+import OrderModal from "./ordersModal";
 
 const URL_ORDERS = `${BASE}${API}${V1}${ORDERS}`;
 

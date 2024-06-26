@@ -19,9 +19,7 @@ import { RootState, fetchCustomers, useAppDispatch } from "../../store";
 import { createCustomers } from "../../store/customer/actions/createCustomer";
 import { deleteCustomers } from "../../store/customer/actions/deleteCustomer";
 import Navbar from "../../components/molecules/navBar";
-import { updateCustomer } from "../../store/customer/updateCustomer";
-
-
+import { updateCustomer } from "../../store/customer/actions/updateCustomer";
 
 const Clienti = () => {
     const [open, setOpen] = useState(false);
@@ -50,7 +48,7 @@ const Clienti = () => {
 
     useEffect(() => {
         dispatch(fetchCustomers());
-    }, [dispatch]);
+    },[dispatch]);
 
 
     const handleSave = async (data: Customers) => {
