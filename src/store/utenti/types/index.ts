@@ -1,7 +1,7 @@
 import { LOADING } from "../../types";
 
 export interface QueryParams {
-    id?: number;
+    resourceId: number;
 }
 
 export interface User {

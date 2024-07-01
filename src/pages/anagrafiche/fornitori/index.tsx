@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, SUPPLIERS, V1 } from "../../../utils/constants";
-import { RootState, fetchSuppliers, useAppDispatch } from "../../../store";
+import { SuppliersData, fetchSuppliers, useAppDispatch,  } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Suppliers } from "../../../store/suppliers/types";
@@ -36,7 +36,7 @@ const Fornitori = () => {
 
     const methods = useForm<Suppliers>({ resolver: zodResolver(validationsSchemaSuppliers) });
 
-    const suppliers = useSelector((state: RootState) => state.suppliers.data);
+    const suppliers = useSelector(SuppliersData);
 
     const filteredSuppliers = suppliers.filter((supplier: { name: string; }) =>
         supplier.name.toLowerCase().includes(ricercaNome.toLowerCase())

@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
-import Label from '../../atoms/Label';
-import { Resources } from '../../../store/resources/types';
+import Label from '../../../atoms/Label';
+import { Resources } from '../../../../store/resources/types';
 
 interface Props {
     title: string;

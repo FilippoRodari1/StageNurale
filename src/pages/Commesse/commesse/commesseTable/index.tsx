@@ -35,7 +35,7 @@ const CommessaTable = ({ currentOrders, handleModalOpen, handleDeleteConfirmatio
                     <th className="text-left px-5 py-2">
                         <button className="flex items-center">Stato</button>
                     </th>
-                    <th className="text-right px-28 py-2">Azioni</th>
+                    <th className="text-right px-16 py-2">Azioni</th>
                 </tr>
             </thead>
             <tbody>

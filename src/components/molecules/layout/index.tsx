@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import SideBar from '../sideBar';
 import IconSvg from '../../iconsSvg';
-import { HOME, RISORSE, COMMESSE, CLIENTI, SKILLS,  LOGIN, ATTIVITA, ORDINI, FORNITORI, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE, TIMESHEET, REPORT} from '../../../utils/constants';
+import { HOME, COMMESSE, SKILLS,  LOGIN, ATTIVITA, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE, TIMESHEET, REPORT, ORDERS, RESOURCES, SUPPLIERS, CUSTOMERS} from '../../../utils/constants';
 
 const SIDEBAR = (isDarkMode: boolean) => [
     { name: 'Home', icon: <IconSvg name="home"/>, link: HOME, className: 'text-pink-500' },
@@ -12,7 +12,7 @@ const SIDEBAR = (isDarkMode: boolean) => [
         icon: <IconSvg name="tipoDiPagamento" color={isDarkMode ? 'white' : 'black'} />, 
         sublinks: [
             { name: 'Commesse', link: COMMESSE },
-            { name: 'Ordini', link: ORDINI },
+            { name: 'Ordini', link: ORDERS },
             { name: 'Attività', link: ATTIVITA }
         ]
     },  
@@ -20,9 +20,9 @@ const SIDEBAR = (isDarkMode: boolean) => [
         name: 'Anagrafiche', 
         icon: <IconSvg name="clienti" color={isDarkMode ? 'white' : 'black'} />, 
         sublinks: [
-            { name: 'Clienti', link: CLIENTI},
-            { name: 'Fornitori', link: FORNITORI },
-            { name: 'Risorse', link: RISORSE },
+            { name: 'Clienti', link: CUSTOMERS},
+            { name: 'Fornitori', link: SUPPLIERS },
+            { name: 'Risorse', link: RESOURCES },
             { name: 'Skills delle risorse', link: SKILLSRISORSE }
         ]
     },  

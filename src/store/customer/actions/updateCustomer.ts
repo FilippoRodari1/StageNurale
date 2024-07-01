@@ -9,7 +9,7 @@ export const updateCustomer = createAsyncThunk(
     'customers/updateCustomer',
     async ({ id, updatedCustomer }: { id: number, updatedCustomer: Customers }, thunkAPI) => {
         try {
-            const response = await apiClient.get({ url: `${BASE}${API}${V1}${CUSTOMERS}/${id}`, params: updatedCustomer });
+            const response = await apiClient.put({ url: `${BASE}${API}${V1}${CUSTOMERS}/${id}`, params: updatedCustomer });
             if (!response.ok) {
                 throw new Error(`Error status: ${response.status}`);
             }

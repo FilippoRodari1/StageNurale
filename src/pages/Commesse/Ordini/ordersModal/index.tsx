@@ -4,8 +4,8 @@ import { validationsSchemaOrders } from "../../../../validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Modal from "../../../../components/atoms/modal";
 import InputForm2 from "../../../../components/molecules/inputForm2";
-import InputFormCommesse from "../../../../components/molecules/inputFormCommesse";
-import InputFormRisorsa from "../../../../components/molecules/inputFormRisorsa";
+import InputFormCommesse from "../../../../components/molecules/InputForm/inputFormCommesse";
+import InputFormRisorsa from "../../../../components/molecules/InputForm/inputFormRisorsa";
 
 
 

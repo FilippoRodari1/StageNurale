@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, RESOURCES, V1 } from "../../../utils/constants";
-import { RootState, useAppDispatch } from "../../../store";
+import { useAppDispatch, getResourceData } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Resources } from "../../../store/resources/types";
@@ -37,7 +37,7 @@ const Risorse = () => {
 
     const methods = useForm<Resources>({ resolver: zodResolver(validationsSchemaResource) });
 
-    const resources = useSelector((state: RootState) => state.resources.data);
+    const resources = useSelector(getResourceData);
 
     const filteredResourcesList = resources.filter((resource) =>
         resource.firstName.toLowerCase().includes(ricercaNome.toLowerCase())

@@ -4,9 +4,10 @@ import { InitalStateJobs } from "./types";
 import {LOADING} from "../types"
 
 const initialState : InitalStateJobs = {
-    data:[],
+    data: [],
     loading: LOADING.IDLE,
-    error: null
+    error: null,
+    jobs: undefined
 }
 
 export const sliceCommesse = createSlice({

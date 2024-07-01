@@ -10,7 +10,7 @@ interface Props {
     password?: boolean;
     className?: string;
     value?: any;
-    onChange?: any
+    onChange?: any;
 }
 
 const InputForm2 = ({ title, name, password = false, type, placeholder, className }: Props) => {

@@ -1,25 +1,20 @@
 export const HOME = '/home';
 export const LOGIN = '/login';
-export const RISORSE = '/risorse';
-export const FORNITORI = '/Fornitori';
+
 export const CLIENTI = '/Clienti';
 export const IMPOSTAZIONI = '/impostazioni';
-export const ORDINI = '/ordini';
 export const FATTURADIACQUISTO = '/purchase-invoice';
 export const FATTURADIACQUISTOATTIVITA = '/purchase-invoice-activity';
 export const FATTUREVENDITA = '/sales-invoice';
 export const SCADENZE = '/scadenze';
-export const PIANIFICAZIONE = '/pianificazione';
+export const PIANIFICAZIONE = '/scheduled-values';
 export const SKILLS= '/skills';
-export const TIPIDIPAGAMENTO= '/tipiDiPagamento';
+export const TIPIDIPAGAMENTO= '/type-of-payments';
 export const UTENTI= '/users';
 export const INSERIMENTOVELOCE = '/inserimentoVeloce';
 export const TIMESHEET = '/timesheet';
 export const REPORT = '/report';
 
-
-
-export const NUOVOCLIENTE = '/nuovoCliente';
 export const CUSTOMERS = '/customers';
 export const COMMESSE = '/jobs';
 export const ORDERS = '/orders';

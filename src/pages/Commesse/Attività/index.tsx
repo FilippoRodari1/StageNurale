@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, ATTIVITA, V1 } from "../../../utils/constants";
-import { RootState, fetchAttività, useAppDispatch } from "../../../store"; 
+import { fetchAttività, useAppDispatch, getAttivitàData } from "../../../store"; 
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,7 +43,7 @@ const AttivitaPage = () => {
 
     const methods = useForm<Activities>({ resolver: zodResolver(validationsSchemaActivities) });
 
-    const attivita = useSelector((state: RootState) => state.activities.data); 
+    const attivita = useSelector(getAttivitàData); 
 
     useEffect(() => {
         dispatch(fetchAttività());

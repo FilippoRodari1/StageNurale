@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, COMMESSE, V1 } from "../../../utils/constants";
-import { RootState, fetchCommesse, useAppDispatch } from "../../../store";
+import { fetchCommesse, useAppDispatch, getCommessaData } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Jobs } from "../../../store/commesse/types";
@@ -36,7 +36,7 @@ const CommessePage = () => {
 
     const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchemaCommesse) });
 
-    const commesse = useSelector((state: RootState) => state.commesse.data);
+    const commesse = useSelector(getCommessaData);
 
     useEffect(() => {
         dispatch(fetchCommesse());

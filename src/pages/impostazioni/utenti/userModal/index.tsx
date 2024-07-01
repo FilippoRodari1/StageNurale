@@ -31,7 +31,7 @@ const UserModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: 
         if (isValid) {
             handleSave({
                 ...data,
-                resourceId: Number(data.resourceId),
+                resourceId: Number(data.resourceId), 
                 password: methods.getValues('password'),
                 passwordConfirm: methods.getValues('passwordConfirm')
             });
@@ -53,7 +53,7 @@ const UserModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: 
                                     <InputForm2 title="Email" name="email" type="text" placeholder="Email" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                                 </div>
                                 <div className="ml-4 md:w-3/5">
-                                    <InputForm2 title="Risorsa" name="resourceId" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputForm2 title="Risorsa" name="resourceId" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row mt-[5px]">

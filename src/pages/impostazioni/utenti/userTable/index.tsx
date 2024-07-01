@@ -16,8 +16,8 @@ const UserTable = ({ currentUser, handleModalOpen, handleDeleteConfirmation }: U
                 <tr>
                     <th className="text-left px-4 py-2">Nome</th>
                     <th className="text-left px-4 py-2">Cognome</th>
-                    <th className="text-left px-4 py-2">Emailo</th>
-                    <th className="text-right px-16 py-2">Azioni</th>
+                    <th className="text-left px-4 py-2">Email</th>
+                    <th className="text-right px-8 py-2">Azioni</th>
                 </tr>
             </thead>
             <tbody>

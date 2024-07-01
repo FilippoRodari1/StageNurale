@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, ORDERS, V1 } from "../../../utils/constants";
-import { RootState, fetchOrders, useAppDispatch } from "../../../store";
+import { fetchOrders, useAppDispatch, getOrdersData } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Orders } from "../../../store/orders/types";
@@ -36,7 +36,7 @@ const OrdersPage = () => {
 
     const methods = useForm<Orders>({ resolver: zodResolver(validationsSchemaOrders) });
 
-    const orders = useSelector((state: RootState) => state.orders.data);
+    const orders = useSelector(getOrdersData);
 
     useEffect(() => {
         dispatch(fetchOrders());

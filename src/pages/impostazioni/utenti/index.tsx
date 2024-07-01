@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API, BASE, UTENTI, V1 } from "../../../utils/constants";
-import { RootState, fetchFatturaAcquisti, fetchUsers, useAppDispatch } from "../../../store";
+import { fetchFatturaAcquisti, fetchUsers, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,13 +10,14 @@ import IconSvg from "../../../components/iconsSvg";
 import ModalDelete from "../../../components/atoms/modal/modalDelete";
 import UserModal from "./userModal";
 import UserTable from "./userTable";
-import { validationSchemaFatturaAcquistoAttivita } from "../../../validations";
+import { validationSchemaUser } from "../../../validations";
 import { User } from "../../../store/utenti/types";
 import { createUsers } from "../../../store/utenti/operations/createUsers";
 import { deleteUsers } from "../../../store/utenti/operations/deleteUsers";
+import { getUserData } from "../../../store/utenti/selectors";
 const URL_UTENTI = `${BASE}${API}${V1}${UTENTI}`;
 
-const FatturaAcquistoAttività = () => {
+const Utenti = () => {
     const [open, setOpen] = useState(false);
     const [editingId, setEditingId] = useState<number | null>(null);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -27,8 +28,8 @@ const FatturaAcquistoAttività = () => {
     const [errorDetails, setErrorDetails] = useState('');
     const dispatch = useAppDispatch();
 
-    const methods = useForm<User>({ resolver: zodResolver(validationSchemaFatturaAcquistoAttivita) });
-    const user = useSelector((state: RootState) => state.user.data);
+    const methods = useForm<User>({ resolver: zodResolver(validationSchemaUser) });
+    const user = useSelector(getUserData);
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -125,7 +126,6 @@ const FatturaAcquistoAttività = () => {
                     onClose={handleCloseError}
                 />
             )}
-
             <Navbar name="Utenti" />
 
             <div className="w-full flex justify-between items-center mt-10 mb-1 mx-4">
@@ -184,4 +184,4 @@ const FatturaAcquistoAttività = () => {
     );
 };
 
-export default FatturaAcquistoAttività;
+export default Utenti;

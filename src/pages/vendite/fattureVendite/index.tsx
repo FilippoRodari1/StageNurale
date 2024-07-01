@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API, BASE, FATTUREVENDITA, V1 } from "../../../utils/constants";
-import { RootState, fetchFatturaAcquisti, fetchFattureVendita, useAppDispatch } from "../../../store";
+import { fetchFatturaAcquisti, fetchFattureVendita, getFattureVenditaData, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +29,7 @@ const FatturaVendita = () => {
     const dispatch = useAppDispatch();
 
     const methods = useForm<SalesInvoice>({ resolver: zodResolver(validationsSchemaFattureVendita) });
-    const salesInvoice = useSelector((state: RootState) => state.salesInvoice.data);
+    const salesInvoice = useSelector(getFattureVenditaData);
 
     useEffect(() => {
         dispatch(fetchFattureVendita());

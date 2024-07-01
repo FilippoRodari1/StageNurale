@@ -106,21 +106,43 @@ export const validationsSchemaSuppliers = z.object({
     note: genericString.min(5, { message: "Troppo corto" }).max(15, { message: "Troppo lungo" }),
 });
 
-
 export const validationSchemaUser = z.object({
     id: z.number().int().positive({ message: "ID deve essere un numero positivo" }),
     email: z.string().email({ message: "Email non valida" }),
     password: z.string().min(8, { message: "Password troppo corta, deve essere almeno 8 caratteri" }),
     passwordConfirm: z.string().min(8, { message: "Password di conferma troppo corta, deve essere almeno 8 caratteri" }),
-    firstName: genericString.min(2, { message: "Nome troppo corto, deve essere almeno 2 caratteri" }),
-    lastName: genericString.min(2, { message: "Cognome troppo corto, deve essere almeno 2 caratteri" }),
+    firstName: z.string().min(2, { message: "Nome troppo corto, deve essere almeno 2 caratteri" }),
+    lastName: z.string().min(2, { message: "Cognome troppo corto, deve essere almeno 2 caratteri" }),
     phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, { message: "Numero di telefono non valido" }),
     requiredActions: z.array(z.string().nonempty({ message: "Azione richiesta non può essere vuota" })),
     realmRoles: z.array(z.string().nonempty({ message: "Ruolo non può essere vuoto" })),
-    resourceId: z.number().positive(),
+    resourceId: z.number().positive({ message: "Risorsa deve essere un numero positivo" }),
     hasDarkTheme: z.boolean()
 }).refine(data => data.password === data.passwordConfirm, {
     message: "Le password non corrispondono",
     path: ["passwordConfirm"]
 });
 
+export const validationSchemaTypeOfPayments = z.object({
+    id: z.number().optional(),
+    name: z.string().nonempty({ message: "Il nome è obbligatorio" }),
+    typeOfPaymentId: z.number().optional(),
+    daysToFirstPayment: z.number().int({ message: "Deve essere un numero intero" }).min(0, { message: "Deve essere maggiore o uguale a 0" }),
+    daysBetweenPayments: z.number().int({ message: "Deve essere un numero intero" }).min(0, { message: "Deve essere maggiore o uguale a 0" }),
+    numberOfPayments: z.number().int({ message: "Deve essere un numero intero" }).min(1, { message: "Deve essere maggiore o uguale a 1" }),
+    movePaymentsToTheEndOfMonth: z.enum(["all", "yes", "no"]),
+    daysOffsetPayments: z.number().int({ message: "Deve essere un numero intero" }).min(0, { message: "Deve essere maggiore o uguale a 0" }).optional(),
+});
+
+export const validationsSchemaPianificazione = z.object({
+    id: z.number().int(),
+    isSale: z.boolean(),
+    valueCategory: z.string().min(1).refine(value => ['valid_enum_value1', 'valid_enum_value2'].includes(value), {message: "Invalid enum value for valueCategory"}),
+    description: z.string().min(1),
+    startDate: z.string().refine(date => !isNaN(Date.parse(date)), { message: "Invalid date format" }),
+    endDate: z.string().refine(date => !isNaN(Date.parse(date)), { message: "Invalid date format" }),
+    netValue: z.number().min(0, { message: "Net value must be a positive number" }),
+    vatValue: z.number().min(0, { message: "VAT value must be a positive number" }),
+    grossValue: z.number().min(0, { message: "Gross value must be a positive number" }),
+    note: z.string().optional()
+});

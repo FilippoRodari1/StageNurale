@@ -7,7 +7,7 @@ import { validationsSchema } from "../../validations";
 
 import FilterModal from "../../components/atoms/modal/filterModal";
 import CustomerTable from "../../components/atoms/table/customersTable";
-import CustomersModal from "../../components/atoms/modal/customersModal";
+import CustomersModal from "./modal/customersModal";
 import ErrorBar from "../../components/molecules/errorBar";
 import IconSvg from "../../components/iconsSvg";
 
@@ -15,7 +15,7 @@ import { Customers } from "../../store/customers/types";
 
 import ModalDelete from "../../components/atoms/modal/modalDelete";
 
-import { RootState, fetchCustomers, useAppDispatch } from "../../store";
+import { fetchCustomers, getCustomersData, useAppDispatch } from "../../store";
 import { createCustomers } from "../../store/customer/actions/createCustomer";
 import { deleteCustomers } from "../../store/customer/actions/deleteCustomer";
 import Navbar from "../../components/molecules/navBar";
@@ -40,7 +40,7 @@ const Clienti = () => {
 
     const methods = useForm<Customers>({ resolver: zodResolver(validationsSchema) });
 
-    const customers = useSelector((state: RootState) => state.customers.data);
+    const customers = useSelector(getCustomersData);
 
     const filteredClients = customers.filter((customer) =>
         customer.name.toLowerCase().includes(ricercaNome.toLowerCase())
@@ -108,6 +108,7 @@ const Clienti = () => {
         setEditingId(id || null);
         setOpen(true);
     };
+    
 
     const handleModalClose = () => {
         setOpen(false);
@@ -217,13 +218,13 @@ const Clienti = () => {
                     </div> 
                          
                     <div>
-                        <CustomersModal 
-                            open={open} 
-                            handleSave={handleSave} 
-                            handleModalClose={handleModalClose} 
-                            editingId={editingId} 
-                            darkMode={isDarkMode}
-                        />
+                    <CustomersModal 
+                        open={open} 
+                        handleSave={handleSave} 
+                        handleModalClose={handleModalClose} 
+                        editingId={editingId} 
+                        darkMode={isDarkMode} 
+                    />
                     </div>
                 </div>
                 <div className="flex justify-between items-center ml-64 mt-4">

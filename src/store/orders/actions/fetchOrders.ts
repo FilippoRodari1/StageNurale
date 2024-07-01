@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiClient } from "../../../utils/Helpers";
 import { API, BASE, ORDERS, V1 } from "../../../utils/constants";
-import { QueryParams } from "../../customers/types";
+import { QueryParams } from "../../orders/types";
 
 export const fetchOrders = createAsyncThunk(
    'fecth/orders', 
