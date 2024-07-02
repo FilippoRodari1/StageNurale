@@ -14,6 +14,9 @@ import { sliceFattureVendita } from "./fattureVendite"
 import { sliceUsers } from "./utenti"
 import { sliceTypeOfPayments } from "./tipiDiPagamento"
 import { slicePianificazione } from "./pianificazione"
+import { sliceSkills } from "./skill"
+import { sliceScadenze } from "./scadenze"
+import { sliceTimesheet } from "./timesheet"
 
 const rootReducer = combineReducers({
     counter: sliceCounter.reducer,
@@ -30,7 +33,10 @@ const rootReducer = combineReducers({
     salesInvoice : sliceFattureVendita.reducer,
     user : sliceUsers.reducer,
     typeOfPayments : sliceTypeOfPayments.reducer,
-    pienificazione : slicePianificazione.reducer
+    pienificazione : slicePianificazione.reducer, 
+    skill : sliceSkills.reducer,
+    scadenze: sliceScadenze.reducer,
+    timesheet: sliceTimesheet.reducer
 })
 
 export default rootReducer

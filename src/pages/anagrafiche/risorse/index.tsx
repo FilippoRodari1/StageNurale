@@ -14,7 +14,7 @@ import ModalDelete from "../../../components/atoms/modal/modalDelete";
 import ResourceTable from "./resourceTable";
 import ResourcesModal from "./resourceModal";
 import { createResources } from "../../../store/resources/resource/createResource";
-import { deletResources } from "../../../store/resources/resource/deleteResouces";
+import { deleteResources } from "../../../store/resources/resource/deleteResouces";
 import { fetchResources } from "../../../store/resources/actions/fetchResources";
 
 const URL_RESOURCES = `${BASE}${API}${V1}${RESOURCES}`;
@@ -69,7 +69,7 @@ const Risorse = () => {
 
     const deleteData = async (id: number) => {
         try {
-            await dispatch(deletResources(id));
+            await dispatch(deleteResources(id));
             setIsDeleteModalOpen(false);
         } catch (error: any) {
             console.error("Error deleting data:", error);

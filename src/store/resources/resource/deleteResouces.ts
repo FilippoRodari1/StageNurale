@@ -3,7 +3,7 @@ import { API, BASE, RESOURCES, V1 } from "../../../utils/constants";
 import { apiClient } from '../../../utils/Helpers';
 
 
-export const deletResources = createAsyncThunk(
+export const deleteResources = createAsyncThunk(
     'resources/deleteResources',
     async (id: number, thunkAPI) => {
         try {

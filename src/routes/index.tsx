@@ -12,7 +12,6 @@ import Fornitori from "../pages/anagrafiche/fornitori";
 import FatturaDiAcquisto from "../pages/acquisti/fatturaDiAcquisto";
 import FatturaDiAcquistoAttività from "../pages/acquisti/fatturaDiAcquistoAttività";
 import FattureVendita from "../pages/vendite/fattureVendite";
-import Scadenze from "../pages/scadenziario/scadenze";
 import Pianificazione from "../pages/scadenziario/pianificazione";
 import SkillsRisorse from "../pages/anagrafiche/skillsRisorse";
 import Utenti from "../pages/impostazioni/utenti";
@@ -21,7 +20,8 @@ import InserimentoVeloce from "../pages/inserimentoVeloce/inserimentoVeloce";
 import Timesheet from "../pages/timesheet/timesheet";
 import Report from "../pages/timesheet/report";
 import OrdersPage from "../pages/Commesse/Ordini";
-import Skills from "../pages/impostazioni/skills";
+import SkillsPage from "../pages/impostazioni/skills";
+import ScadenzePage from "../pages/scadenziario/scadenze";
 
 const RoutesComponent = () => {
     return (
@@ -41,10 +41,10 @@ const RoutesComponent = () => {
                         <Route path={FATTURADIACQUISTOATTIVITA} element={<FatturaDiAcquistoAttività />} />
                         <Route path={SUPPLIERS} element={<Fornitori />} />
                         <Route path={CUSTOMERS} element={<Clienti />} />
-                        <Route path={SKILLS} element={<Skills/>} />
+                        <Route path={SKILLS} element={<SkillsPage/>} />
                         <Route path={TIPIDIPAGAMENTO} element={<TipiDiPagamento />} />
                         <Route path={UTENTI} element={<Utenti />} />
-                        <Route path={SCADENZE} element={<Scadenze />} />
+                        <Route path={SCADENZE} element={<ScadenzePage />} />
                         <Route path={PIANIFICAZIONE} element={<Pianificazione />} />
                         <Route path={FATTUREVENDITA} element={<FattureVendita />} />
                         <Route path={TIMESHEET} element={<Timesheet />} />

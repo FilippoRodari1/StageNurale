@@ -62,7 +62,7 @@ const SIDEBAR = (isDarkMode: boolean) => [
         name: 'Timesheet', 
         icon: <IconSvg name="timesheet" color={isDarkMode ? 'white' : 'black'} />, 
         sublinks: [
-            { name: 'timesheet', link: TIMESHEET },
+            { name: 'Timesheet', link: TIMESHEET },
             { name: 'Report', link: REPORT },
         ]
     },
@@ -120,10 +120,10 @@ const Layout = () => {
                     />
                 </div>
                 <button 
-                    className={`absolute top-[90px] right-4 items-center justify-center bg-pink-500 text-white px-2 py-1 transition-all duration-300 transform origin-top rounded-full ${isSidebarOpen ? 'translate-x-full' : 'right-[-16px]'}`} 
+                    className={`absolute top-[90px] right-4 items-center justify-center bg-pink-500 text-white px-1.5 py-0.5 transition-all duration-300 transform origin-top rounded-full ${isSidebarOpen ? 'translate-x-full' : 'right-[-16px]'}`} 
                     onClick={toggleSidebar}
                 >
-                    {isSidebarOpen ? ' ◁' : '▷'}
+                    {isSidebarOpen ? '◁' : '▷'}
                 </button>
             </div>
             <div className="flex-1 mr-6">

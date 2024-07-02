@@ -21,7 +21,7 @@ const SkillResourceTable= ({ currentSkillResource, handleModalOpen, handleDelete
                     <th className="text-left px-32 py-2">
                         <button className="flex items-center">Skill</button>
                     </th>
-                    <th className="text-left px-10 py-2">
+                    <th className="text-left px-6 py-2">
                         <button className="flex items-center">Livello</button>
                     </th>
                     <th className="text-left px-10 py-2">

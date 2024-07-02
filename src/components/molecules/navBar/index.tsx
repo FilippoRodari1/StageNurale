@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import IconSvg from '../../iconsSvg';
-import ModalUser from '../../../pages/clienti/modal/modalUser';
+import ModalUser from '../../atoms/modal/modalUser';
 import { removeTokenCookies } from '../../../utils/Helpers';
 import { LOGIN } from '../../../utils/constants';
 import { useNavigate } from 'react-router-dom';

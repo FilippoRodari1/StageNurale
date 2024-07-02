@@ -6,6 +6,7 @@ import Modal from "../../../../components/atoms/modal";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import InputFormCommesse from "../../../../components/molecules/InputForm/inputFormCommesse";
 import InputFormRisorsa from "../../../../components/molecules/InputForm/inputFormRisorsa";
+import { Jobs } from "../../../../store/commesse/types";
 
 
 
@@ -15,6 +16,7 @@ interface OrderModalProps {
     handleSave: (data: Orders) => void;
     editingId: number | null;
     darkMode: boolean;
+    job?: Jobs[];
 }
 
 const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: OrderModalProps) => {
@@ -83,7 +85,7 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-full">
-                                <InputFormCommesse name="jobCode" title="Commessa" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} jobs={[]} />
+                                <InputFormCommesse title={"Commessa"} name={"jobCode"} jobs={[]}/>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
@@ -107,3 +109,5 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
 }
 
 export default OrderModal;
+
+

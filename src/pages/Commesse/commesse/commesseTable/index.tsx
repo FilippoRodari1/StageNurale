@@ -3,13 +3,13 @@ import IconSvg from "../../../../components/iconsSvg";
 import { Jobs } from "../../../../store/commesse/types";
 
 interface CommessaTableProps {
-    currentOrders: Jobs[];
+    currentJobs: Jobs[];
     handleModalOpen: (id: number) => void;
     handleDeleteConfirmation: (orders: Jobs) => void;
     isDarkMode: boolean;
 }
 
-const CommessaTable = ({ currentOrders, handleModalOpen, handleDeleteConfirmation, isDarkMode }: CommessaTableProps) => {
+const CommessaTable = ({ currentJobs, handleModalOpen, handleDeleteConfirmation, isDarkMode }: CommessaTableProps) => {
     return (
         <table className={`w-full divide-gray-100 ${isDarkMode ? 'dark-mode' : ''}`}>
             <thead>
@@ -39,18 +39,18 @@ const CommessaTable = ({ currentOrders, handleModalOpen, handleDeleteConfirmatio
                 </tr>
             </thead>
             <tbody>
-            {currentOrders.map((order, index) => (
-                <tr key={order.id} className={`${index % 2 === 0 ? 'bg-gray-100' : ''}`}>
-                    <td className="text-left px-4 py-2">{order.code}</td>
-                    <td className="text-left px-5 py-2">{order.description}</td>
-                    <td className="text-left px-5 py-2">{order.customer?.name || 'Nome non disponibile'}</td>
-                    <td className="text-left px-5 py-2">{format(new Date(order.startDate), 'dd/MM/yy')}</td>
-                    <td className="text-left px-5 py-2">{format(new Date(order.endDate), 'dd/MM/yy')}</td>
-                    <td className="text-left px-5 py-2">{order.jobType}</td>
-                    <td className="text-left px-5 py-2">{order.state}</td>
+            {currentJobs.map((jobs, index) => (
+                <tr key={jobs.id} className={`${index % 2 === 0 ? 'bg-gray-100' : ''}`}>
+                    <td className="text-left px-4 py-2">{jobs.code}</td>
+                    <td className="text-left px-5 py-2">{jobs.description}</td>
+                    <td className="text-left px-5 py-2">{jobs.customer?.name || 'Nome non disponibile'}</td>
+                    <td className="text-left px-5 py-2">{format(new Date(jobs.startDate), 'dd/MM/yy')}</td>
+                    <td className="text-left px-5 py-2">{format(new Date(jobs.endDate), 'dd/MM/yy')}</td>
+                    <td className="text-left px-5 py-2">{jobs.jobType}</td>
+                    <td className="text-left px-5 py-2">{jobs.state}</td>
                     <td className="text-right px-8 py-2">
-                        <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(order.id)}><IconSvg name="modifica" /></button>
-                        <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleDeleteConfirmation(order)}><IconSvg name="delete" /></button>
+                        <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(jobs.id)}><IconSvg name="modifica" /></button>
+                        <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleDeleteConfirmation(jobs)}><IconSvg name="delete" /></button>
                     </td>
                 </tr>
             ))}

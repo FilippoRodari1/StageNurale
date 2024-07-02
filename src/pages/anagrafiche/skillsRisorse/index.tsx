@@ -39,7 +39,7 @@ const SkillRisorse = () => {
 
     const skillResources = useSelector((state: RootState) => state.skillResource.data);
 
-    const filteredResourcesList = skillResources.filter((resource) =>
+    const filteredResourcesList = skillResources.filter((resource: { resource: { name: string; }; }) =>
         resource.resource.name.toLowerCase().includes(ricercaNome.toLowerCase())
     );
 

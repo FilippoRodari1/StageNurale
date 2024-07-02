@@ -146,3 +146,24 @@ export const validationsSchemaPianificazione = z.object({
     grossValue: z.number().min(0, { message: "Gross value must be a positive number" }),
     note: z.string().optional()
 });
+
+export const validationsSchemaSkills = z.object({
+    name: genericString.min(5, { message: "Troppo corto" }).max(15, { message: "Troppo lungo" }),
+    skillType: genericString.min(5, { message: "Troppo corto" }).max(15, { message: "Troppo lungo" }),
+    note: genericString.min(5, { message: "Troppo corto" }).max(15, { message: "Troppo lungo" }),
+});
+
+export const validationsSchemaScadenze = z.object({
+
+});
+
+export const validationsSchemaTimesheet = z.object({
+    id: z.number(),           
+    resourceId: z.number(),   
+    orderId: z.number(),      
+    jobId: z.number(),        
+    operationDate: z.string(),
+    workedHours: z.number(),  
+    markType: z.string(),     
+    note: z.string(),         
+});

@@ -1,12 +1,12 @@
 export const HOME = '/home';
 export const LOGIN = '/login';
 
-export const CLIENTI = '/Clienti';
+
 export const IMPOSTAZIONI = '/impostazioni';
 export const FATTURADIACQUISTO = '/purchase-invoice';
 export const FATTURADIACQUISTOATTIVITA = '/purchase-invoice-activity';
 export const FATTUREVENDITA = '/sales-invoice';
-export const SCADENZE = '/scadenze';
+export const SCADENZE = '/scheduled-payments';
 export const PIANIFICAZIONE = '/scheduled-values';
 export const SKILLS= '/skills';
 export const TIPIDIPAGAMENTO= '/type-of-payments';

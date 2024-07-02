@@ -3,7 +3,7 @@ import InputForm2 from '../../molecules/inputForm2';
 import Button from '../../atoms/buttom';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { API, CLIENTI, LOGIN, BASE, V1, AUTH } from '../../../utils/constants';
+import { API, LOGIN, BASE, V1, AUTH, CUSTOMERS } from '../../../utils/constants';
 import { addTokenCookies } from '../../../utils/Helpers';
 import RecoverPassword from './passwordDimenticata';
 
@@ -55,7 +55,7 @@ const Login = () => {
                 const token = userData.user.stsTokenManager.accessToken;
                 const refreshToken = userData.user.stsTokenManager.refreshToken;
                 addTokenCookies({ token, refreshToken });
-                navigate(CLIENTI);
+                navigate(CUSTOMERS);
                 console.log(token, refreshToken);
                 return console.log(userData);
             } 
@@ -90,7 +90,7 @@ const Login = () => {
                     </div>
 
                     <div className="mb-8">
-                        <Button onClick={methods.handleSubmit(onSubmit)}>
+                        <Button onClick={methods.handleSubmit(onSubmit)} className={''}>
                             <div className="w-80 h-12 gap-0 rounded-l-[15px] rounded-r-[15px] font-bold leading-24 text-center bg-pink-500 text-zinc-50 text-3xl hover:bg-pink-400 transition duration-300 transform-none cursor-pointer">Accedi</div>
                         </Button>
                     </div>
@@ -100,12 +100,12 @@ const Login = () => {
                     </div>
 
                     <div className="mb-2">
-                        <Button type="button">
+                        <Button type="button" className={''}>
                             <div className="font-lato text-20 font-bold leading-24 text-center">Accedi con Google</div>
                         </Button>
                     </div>
 
-                    <Button type="button">
+                    <Button type="button" className={''}>
                         <div className="font-lato text-20 font-bold leading-24 text-center">Accedi con Facebook</div>
                     </Button>
                 </div>

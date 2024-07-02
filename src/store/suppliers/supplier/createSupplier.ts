@@ -5,7 +5,7 @@ import { apiClient } from '../../../utils/Helpers';
 
 
 export const createSuppliers = createAsyncThunk(
-    'customers/createCustomers',
+    'suppliers/createSuppliers',
     async (supplier: Suppliers, thunkAPI) => {
         try {
             const response = await apiClient.post({ url: `${BASE}${API}${V1}${SUPPLIERS}`, params: supplier })

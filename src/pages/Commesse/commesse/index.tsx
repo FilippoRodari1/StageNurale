@@ -213,7 +213,7 @@ const CommessePage = () => {
                     )}
                     <div className="overflow-auto h-full font-lato">
                         <CommessaTable
-                            currentOrders={currentCommesse}
+                            currentJobs={currentCommesse}
                             handleModalOpen={handleModalOpen}
                             handleDeleteConfirmation={handleDeleteConfirmation}
                             isDarkMode={isDarkMode}
