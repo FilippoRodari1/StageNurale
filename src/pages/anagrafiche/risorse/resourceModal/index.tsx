@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Resources } from "../../../../store/resources/types";
 import { validationsSchemaResource } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
+import { SuppliersData, fetchSuppliers, useAppDispatch } from "../../../../store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import InputFormFornitore from "../../../../components/molecules/InputForm/inputFormFornitore";
 
 interface ResourcesModalProps {
     open: boolean;
@@ -15,6 +19,13 @@ interface ResourcesModalProps {
 
 const ResourcesModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: ResourcesModalProps) => {
     const methods = useForm<Resources>({ resolver: zodResolver(validationsSchemaResource) });
+    const dispatch = useAppDispatch();
+
+    const suppliers = useSelector(SuppliersData);
+
+    useEffect(() => {
+        dispatch(fetchSuppliers());
+    }, [dispatch]);
 
     const handleFormSubmit = async () => {
         const isValid = await methods.trigger();
@@ -56,7 +67,7 @@ const ResourcesModal = ({ open, handleModalClose, handleSave, editingId, darkMod
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="supplierId" title="Fornitore ID" type="number" placeholder="fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormFornitore name="supplierId" title="Fornitore" type="number" placeholder="fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} suppliers={suppliers} />
                             </div>
                             <div className="ml-4 md:w-full">
                                 <InputForm2 title="Note" name="note" type="text" placeholder="Inserisci Note" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />

@@ -57,7 +57,7 @@ const Utenti = () => {
 
     const deleteData = async (id: number) => {
         try {
-             await dispatch(deleteUsers(id));
+            await dispatch(deleteUsers(id));
             setIsDeleteModalOpen(false);
         } catch (error: any) {
             console.error("Error deleting data:", error);
@@ -115,6 +115,7 @@ const Utenti = () => {
         setErrorMessage('');
         setErrorDetails('');
     };
+
 
 
     return (

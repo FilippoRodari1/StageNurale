@@ -6,7 +6,10 @@ import Modal from "../../../../components/atoms/modal";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import InputFormCommesse from "../../../../components/molecules/InputForm/inputFormCommesse";
 import InputFormRisorsa from "../../../../components/molecules/InputForm/inputFormRisorsa";
-import { Jobs } from "../../../../store/commesse/types";
+import { useEffect } from "react";
+import { SuppliersData, fetchCommesse, fetchResources, fetchSuppliers, getCommessaData, getResourceData, useAppDispatch } from "../../../../store";
+import { useSelector } from "react-redux";
+import InputFormFornitore from "../../../../components/molecules/InputForm/inputFormFornitore";
 
 
 
@@ -16,11 +19,27 @@ interface OrderModalProps {
     handleSave: (data: Orders) => void;
     editingId: number | null;
     darkMode: boolean;
-    job?: Jobs[];
 }
 
 const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: OrderModalProps) => {
     const methods = useForm<Orders>({ resolver: zodResolver(validationsSchemaOrders) });
+    const dispatch = useAppDispatch();
+
+    const jobs = useSelector(getCommessaData);
+    const risorsa = useSelector(getResourceData);
+    const supplier = useSelector(SuppliersData);
+
+    useEffect(() => {
+        dispatch(fetchCommesse());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchResources());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchSuppliers());
+    }, [dispatch]);
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -68,7 +87,7 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputFormRisorsa name="resource" title="Risorsa" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} resource={[]} />
+                                <InputFormRisorsa name="resource" title="Risorsa" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} resource={risorsa} />
                             </div>
                             <div className="ml-4 md:w-3/5">
                                 <InputForm2 name="dailyHours" title="Ore giornaliere allocate" type="number" placeholder="8" className={`text-right  appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
@@ -80,12 +99,12 @@ const OrderModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                                 <InputForm2 name="hourCost" title="Costo Orario" type="number" placeholder="€ 0,00" className={`text-right  appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="supplierId" title="Fornitore" type="number" placeholder="Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormFornitore name="supplierId" title="Fornitore" type="number" placeholder="Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} suppliers={supplier} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-full">
-                                <InputFormCommesse title={"Commessa"} name={"jobCode"} jobs={[]}/>
+                                <InputFormCommesse title={"Commessa"} name={"jobCode"} jobs={jobs} type={"text"}/>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">

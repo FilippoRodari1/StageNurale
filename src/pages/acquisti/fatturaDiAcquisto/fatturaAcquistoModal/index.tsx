@@ -4,6 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationsSchemaFatturaAcquisto } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { PurchaseInvoice } from "../../../../store/acquisti/types";
+import InputFormFornitore from "../../../../components/molecules/InputForm/inputFormFornitore";
+import { SuppliersData, fetchCustomers, fetchSuppliers, getCustomersData, useAppDispatch } from "../../../../store";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import InputFormTipoDiPagamento from "../../../../components/molecules/InputForm/inputFormCliente/inputFormTipoDiPagamento";
 
 interface FatturaAcquistoModalProps {
     open: boolean;
@@ -15,6 +20,22 @@ interface FatturaAcquistoModalProps {
 
 const FatturaAcquistoModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: FatturaAcquistoModalProps) => {
     const methods = useForm<PurchaseInvoice>({ resolver: zodResolver(validationsSchemaFatturaAcquisto) });
+    const dispatch = useAppDispatch();
+
+    const supplier = useSelector(SuppliersData);
+    const tipoPagamento = useSelector(getCustomersData)
+    
+
+    useEffect(() => {
+        dispatch(fetchSuppliers());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchCustomers());
+    }, [dispatch]);
+
+
+
     const handleFormSubmit = async () => {
         const isValid = await methods.trigger();
         if (isValid) {
@@ -49,12 +70,12 @@ const FatturaAcquistoModal = ({ open, handleModalClose, handleSave, editingId, d
                                     <InputForm2 name="operationDate" title="Data" type="date" placeholder="Data" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                                 </div>
                                 <div className="ml-4 md:w-3/5">
-                                    <InputForm2 name="supplierId" title="Fornitore" type="text" placeholder="Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputFormFornitore name="supplierId" title="Fornitore" type="text" placeholder="Fornitore" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} suppliers={supplier} />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row mt-[5px]">
                                 <div className="md:w-full md:pl-4">
-                                    <InputForm2 title="Tipo di pagamento" name="typeOfPaymentId" type="number" placeholder="Tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputFormTipoDiPagamento title="Tipo di pagamento" name="typeOfPaymentId" type="number" placeholder="Tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} customers={tipoPagamento} />
                                 </div>
                                 <div className="md:w-full md:pl-4">
                                     <InputForm2 title="Stato" name="state" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />

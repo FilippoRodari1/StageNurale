@@ -4,6 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Jobs } from "../../../../store/commesse/types";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { validationsSchemaCommesse } from "../../../../validations";
+import InputFormCliente from "../../../../components/molecules/InputForm/inputFormCliente";
+import { fetchCommesse, fetchCustomers, getCommessaData, getCustomersData, useAppDispatch } from "../../../../store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import InputFormTipoDiCommesse from "../../../../components/molecules/InputForm/inputFormCommesse/inputFormTipoCommessa";
 
 interface CommessaModalProps {
     open: boolean;
@@ -15,6 +20,19 @@ interface CommessaModalProps {
 
 const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: CommessaModalProps) => {
     const methods = useForm<Jobs>({ resolver: zodResolver(validationsSchemaCommesse) });
+    const dispatch = useAppDispatch();
+
+    const customer = useSelector(getCustomersData);
+    const jobs = useSelector(getCommessaData);
+
+    useEffect(() => {
+        dispatch(fetchCustomers());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchCommesse());
+    }, [dispatch]);
+
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -49,7 +67,7 @@ const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Cliente" name="customerId" type="number" placeholder="Cliente" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
+                                <InputFormCliente title="Cliente" name="customerId" type="number" placeholder="Cliente" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} customers={customer} />
                             </div>
                             <div className="ml-4 md:w-3/5">
                                 <InputForm2 name="startDate" title="Data Inizio" type="date" placeholder="Data Inizio" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
@@ -73,7 +91,7 @@ const CommessaModal = ({ open, handleModalClose, handleSave, editingId, darkMode
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="jobType" title="Tipo di Commessa" type="text" placeholder="Tipo di Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
+                                <InputFormTipoDiCommesse name="jobType" title="Tipo di Commessa" type="text" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} jobs={jobs} />
                             </div>
                             <div className="ml-4 md:w-3/5">
                                 <InputForm2 name="state" title="Stato" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />

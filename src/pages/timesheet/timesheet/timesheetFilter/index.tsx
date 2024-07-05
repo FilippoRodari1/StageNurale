@@ -37,8 +37,8 @@ const TimesheetFilterModal = ({
 
     return (
         <ModalFiltri show={open} className={`fixed inset-0 flex items-center justify-center z-50 ${darkMode ? 'bg-opacity-50' : 'bg-opacity-50'}`}>
-            <div className={`rounded-xl max-w-md w-full flex-col items-center justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-                <div className={`rounded-lg p-6 max-w-md w-full flex flex-col mb-2 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+            <div className={`rounded-xl max-w-md max-h-screen h-auto w-full flex-col items-center justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                <div className={`rounded-lg p-6 max-w-md max-h-screen h-auto w-full flex flex-col mb-2 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
                     <div className="flex justify-between text-center mt-2">
                         <p className={`font-bold font-lato text-left ${darkMode ? 'text-white' : 'text-black'}`}>Filtri</p>
                         <button onClick={onClose} className={`font-bold font-lato py-1 px-2 rounded-lg mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>X</button>

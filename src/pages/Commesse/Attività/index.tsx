@@ -136,7 +136,7 @@ const AttivitaPage = () => {
         setFilterValues((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleFilterSubmit = () => {
+    const handleFilterSubmit = () => {                                                                                                                                                                                        
         setIsFilteredModalOpen(false);
 
         const filtered = attivita.filter((activity: Activities) => {

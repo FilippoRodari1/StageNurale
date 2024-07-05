@@ -4,6 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationsSchemaActivities } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { Activities } from "../../../../store/attività/types";
+import InputFormCommesse from "../../../../components/molecules/InputForm/inputFormCommesse";
+import { fetchCommesse, fetchOrders, fetchResources, getCommessaData, getOrdersData, getResourceData, useAppDispatch } from "../../../../store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import InputFormOrdine from "../../../../components/molecules/InputForm/inputFormOrdine";
+import InputFormRisorsa from "../../../../components/molecules/InputForm/inputFormRisorsa";
 
 interface ActivitiesModalProps {
     open: boolean;
@@ -15,6 +21,24 @@ interface ActivitiesModalProps {
 
 const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: ActivitiesModalProps) => {
     const methods = useForm<Activities>({ resolver: zodResolver(validationsSchemaActivities) });
+    const dispatch = useAppDispatch();
+
+    const job = useSelector(getCommessaData);
+    const orders = useSelector(getOrdersData);
+    const resources = useSelector(getResourceData);
+
+
+    useEffect(() => {
+        dispatch(fetchCommesse());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchOrders());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchResources());
+    }, [dispatch]);
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -38,13 +62,13 @@ const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMo
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
                         <div className="flex flex-col md:flex-row mt-[50px] ">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Commessa" name="jobId" type="text" placeholder="Commessa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormCommesse title="Commessa" name="jobId" type="text" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} jobs={job} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="Ordine" title="order" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormOrdine name="Ordine" title="order" type="text" placeholder="Ordine" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} orders={orders} />
                             </div> 
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Risorsa" name="resources" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
+                                <InputFormRisorsa title="Risorsa" name="resources" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} resource={resources} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  

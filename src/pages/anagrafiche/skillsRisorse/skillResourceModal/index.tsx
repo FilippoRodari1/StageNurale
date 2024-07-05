@@ -4,7 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationSchemaSkillResource } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { SkillResources } from "../../../../store/skillResource/types";
-
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch, fetchSkill, fetchSkillResource, getSkillResourceData, getSkillData } from "../../../../store";
+import InputFormSkill from "../../../../components/molecules/InputForm/inputFormSkill";
+import InputFormLivello from "../../../../components/molecules/InputForm/risorsaForm/inputFormLivello";
+import InputFormSkillRisorsa from "../../../../components/molecules/InputForm/risorsaForm/inputFormRisorsa";
 
 interface SkillResourceModalProps {
     open: boolean;
@@ -16,14 +21,28 @@ interface SkillResourceModalProps {
 
 const SkillResourcesModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: SkillResourceModalProps) => {
     const methods = useForm<SkillResources>({ resolver: zodResolver(validationSchemaSkillResource) });
-    console.log(methods.getValues());
+    const dispatch = useAppDispatch();
+
+    const skill = useSelector(getSkillData);
+    const level = useSelector(getSkillResourceData);
+    const skillResource = useSelector(getSkillResourceData);
+
+    useEffect(() => {
+        dispatch(fetchSkill());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchSkillResource());
+    }, [dispatch]);
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
         if (!isError) {
             const data = methods.getValues();
             const skillResourceData: SkillResources = {
-                ...data
+                ...data,
+                skillId: parseInt(data.skillId as unknown as string),
+                level: parseInt(data.level as unknown as string), 
             };
             handleSave(skillResourceData);
             methods.reset();
@@ -31,22 +50,22 @@ const SkillResourcesModal = ({ open, handleModalClose, handleSave, editingId, da
     };
 
     return (
-        <Modal show={open} className={`fixed inset-0 flex z-50 ${darkMode ? 'dark: bg-gray-900 bg-opacity-50' : 'bg-gray-900 bg-opacity-50'}`}>
+        <Modal show={open} className={`fixed inset-0 flex z-50 ${darkMode ? 'dark:bg-gray-900 bg-opacity-50' : 'bg-gray-900 bg-opacity-50'}`}>
             <FormProvider {...methods}>
                 <h2 className={`text-xl font-extrabold font-lato mb-4 mx-4 text-left ${darkMode ? 'text-pink-500' : 'text-pink-500'}`}>
                     {editingId ? 'Modifica Skill per la risorsa' : 'Aggiungi nuova Skill per la risorsa'}
                 </h2>
                 <div className="h-full w-full">
                     <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>
-                        <div className="flex flex-col md:flex-row mt-[50px] ">
+                        <div className="flex flex-col md:flex-row mt-[50px]">
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 title="Risorsa" name="resourceId" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormSkillRisorsa title="Risorsa" name="resourceId" type="text" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} skillsRisorse={skillResource} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="SkillId" title="Skill" type="text" placeholder="Skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormSkill name="skillId" title="Skill" type="number" placeholder="Skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} skill={skill} />
                             </div> 
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="level" title="Livello" type="number" placeholder="Livello" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormLivello name="level" title="Livello" type="number" placeholder="Livello" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} skillsRisorse={level} />
                             </div> 
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  

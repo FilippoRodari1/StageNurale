@@ -39,7 +39,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="text"
-                        name="commessa"
+                        name="jobId"
                         value={filterValues.commessa}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -50,7 +50,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="text"
-                        name="ordine"
+                        name="order"
                         value={filterValues.ordine}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -61,7 +61,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="text"
-                        name="risorsa"
+                        name="resource"
                         value={filterValues.risorsa}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -72,7 +72,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="text"
-                        name="stato"
+                        name="state"
                         value={filterValues.stato}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -83,7 +83,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="date"
-                        name="dataInizio"
+                        name="startDate"
                         value={filterValues.dataInizio}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -94,7 +94,7 @@ const FilterModalAttivita = ({
                 <div className="">
                     <InputForm2
                         type="date"
-                        name="dataFine"
+                        name="endDate"
                         value={filterValues.dataFine}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 

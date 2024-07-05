@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationsSchema } from "../../../validations";
 import Modal from "../../../components/atoms/modal";
 import InputForm2 from "../../../components/molecules/inputForm2";
+import InputFormTipoDiPagamento from "../../../components/molecules/InputForm/inputFormCliente/inputFormTipoDiPagamento";
+import { fetchCustomers, getCustomersData, useAppDispatch } from "../../../store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 interface CustomersModalProps {
     open: boolean;
@@ -15,6 +19,13 @@ interface CustomersModalProps {
 
 const CustomersModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: CustomersModalProps) => {
     const methods = useForm<Customers>({ resolver: zodResolver(validationsSchema) });
+    const dispatch = useAppDispatch();
+
+    const customer = useSelector(getCustomersData);
+
+    useEffect(() => {
+        dispatch(fetchCustomers());
+    }, [dispatch]);
 
     const handleFormSubmit = async () => {
         const isValid = await methods.trigger();
@@ -46,7 +57,7 @@ const CustomersModal = ({ open, handleModalClose, handleSave, editingId, darkMod
                                 <InputForm2 title="Nome" name="name" type="text" placeholder="Nome Cliente" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="typeOfPaymentId" title="Tipo di pagamento" type="text" placeholder="tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                <InputFormTipoDiPagamento name="typeOfPaymentId" title="Tipo di pagamento" type="text" placeholder="tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} customers={customer} />
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">

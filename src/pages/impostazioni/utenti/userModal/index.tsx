@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationSchemaUser } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { User } from "../../../../store/utenti/types";
+import { fetchResources, getResourceData, useAppDispatch } from "../../../../store";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import InputFormRisorsa from "../../../../components/molecules/InputForm/inputFormRisorsa";
 
 interface UserModalProps {
     open: boolean;
@@ -15,6 +19,13 @@ interface UserModalProps {
 
 const UserModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: UserModalProps) => {
     const methods = useForm<User>({ resolver: zodResolver(validationSchemaUser) });
+    const dispatch = useAppDispatch();
+    const risorsa = useSelector(getResourceData);
+
+    useEffect(() => {
+        dispatch(fetchResources());
+    }, [dispatch]);
+
 
     const generateRandomPassword = () => {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?!#.;:';
@@ -53,7 +64,7 @@ const UserModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: 
                                     <InputForm2 title="Email" name="email" type="text" placeholder="Email" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                                 </div>
                                 <div className="ml-4 md:w-3/5">
-                                    <InputForm2 title="Risorsa" name="resourceId" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputFormRisorsa title="Risorsa" name="resourceId" type="number" placeholder="Risorsa" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} resource={risorsa} />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row mt-[5px]">

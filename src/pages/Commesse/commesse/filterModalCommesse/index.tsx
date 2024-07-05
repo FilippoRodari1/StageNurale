@@ -42,7 +42,7 @@ const FilterModalCommesse = ({
                 <div className="mb-4">
                     <InputForm2
                         type="text"
-                        name="cliente"
+                        name="customerId"
                         value={filterValues.cliente}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
@@ -53,7 +53,7 @@ const FilterModalCommesse = ({
                 <div className="mb-4">
                     <InputForm2
                         type="text"
-                        name="descrizione"
+                        name="description"
                         value={filterValues.descrizione}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 

@@ -4,6 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationsSchemaFattureVendita } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { SalesInvoice } from "../../../../store/fattureVendite/types";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { fetchCustomers, getCustomersData, useAppDispatch } from "../../../../store";
+import InputFormCliente from "../../../../components/molecules/InputForm/inputFormCliente";
+import InputFormTipoDiPagamento from "../../../../components/molecules/InputForm/inputFormCliente/inputFormTipoDiPagamento";
 
 interface FattureVenditaModalProps {
     open: boolean;
@@ -15,8 +20,16 @@ interface FattureVenditaModalProps {
 
 const FattureVenditaModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: FattureVenditaModalProps) => {
     const methods = useForm<SalesInvoice>({ resolver: zodResolver(validationsSchemaFattureVendita) });
+    const dispatch = useAppDispatch();
+    const cliente = useSelector(getCustomersData);
+
+    useEffect(() => {
+        dispatch(fetchCustomers());
+    }, [dispatch]);
+
     const handleFormSubmit = async () => {
         const isValid = await methods.trigger();
+
         if (isValid) {
             const data = methods.getValues();
             const SalesInvoiceData: SalesInvoice = {
@@ -49,12 +62,12 @@ const FattureVenditaModal = ({ open, handleModalClose, handleSave, editingId, da
                                     <InputForm2 name="date" title="Data" type="date" placeholder="Data" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
                                 </div>
                                 <div className="ml-4 md:w-3/5">
-                                    <InputForm2 name="customerId" title="Clienti" type="text" placeholder="Clienti" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputFormCliente name="customerId" title="Clienti" type="text" placeholder="Clienti" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} customers={cliente} />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row mt-[5px]">
                                 <div className="md:w-full md:pl-4">
-                                    <InputForm2 title="Tipo di pagamento" name="typeOfPaymentId" type="number" placeholder="Tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />
+                                    <InputFormTipoDiPagamento title="Tipo di pagamento" name="typeOfPaymentId" type="number" placeholder="Tipo di pagamento" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} customers={cliente} />
                                 </div>
                                 <div className="md:w-full md:pl-4">
                                     <InputForm2 title="Stato" name="state" type="text" placeholder="Stato" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ' text-black border-gray-300'}`} />

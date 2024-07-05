@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { validationsSchemaSkills } from "../../../../validations";
 import InputForm2 from "../../../../components/molecules/inputForm2";
 import { Skills } from "../../../../store/skill/types";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch, getSkillData, fetchSkill } from "../../../../store";
+import InputFormTipoDiSkill from "../../../../components/molecules/InputForm/inputFormSkill/inputFormTipoDiSkill";
 
 
 interface SkillModalProps {
@@ -17,6 +21,13 @@ interface SkillModalProps {
 const SkillModal = ({ open, handleModalClose, handleSave, editingId, darkMode }: SkillModalProps) => {
     const methods = useForm<Skills>({ resolver: zodResolver(validationsSchemaSkills) });
     console.log(methods.getValues());
+    const dispatch = useAppDispatch();
+    const typeSkill = useSelector(getSkillData);
+
+    useEffect(() => {
+        dispatch(fetchSkill());
+    }, [dispatch]);
+
 
     const handleFormSubmit = async () => {
         const isError = await methods.trigger();
@@ -43,7 +54,7 @@ const SkillModal = ({ open, handleModalClose, handleSave, editingId, darkMode }:
                                 <InputForm2 title="Nome" name="name" type="text" placeholder="Nome" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
                             </div>
                             <div className="ml-4 md:w-3/5">
-                                <InputForm2 name="skillType" title="Tipo di skill" type="number" placeholder="tipo di skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} />
+                                <InputFormTipoDiSkill name="skillType" title="Tipo di skill" type="number" placeholder="tipo di skill" className={`appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'text-black border-gray-300'}`} skill={typeSkill} />
                             </div> 
                         </div>
                         <div className="flex flex-col md:flex-row mt-[5px]">  
