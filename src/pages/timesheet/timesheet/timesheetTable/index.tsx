@@ -46,7 +46,7 @@ const TimesheetTable = ({ currentTimesheet, handleModalOpen, handleDeleteConfirm
                     <tr key={timesheet.id} className={`${index % 2 === 0 ? 'bg-gray-100 ' : ''}`}>
                         <td className="text-left px-6 py-2">{timesheet.id}</td>
                         <td className="text-left px-8 py-2">{format(new Date(timesheet.operationDate), 'dd/MM/yy')}</td>
-                        <td className="text-left px-8 py-2">{timesheet.resourceId}</td>
+                        <td className="text-left px-8 py-2">{timesheet.resource.name}</td>
                         <td className="text-left px-12 py-2">{timesheet.orderId}</td>
                         <td className="text-left px-12 py-2">{timesheet.jobId}</td>
                         <td className="text-left px-12 py-2">{timesheet.workedHours}</td>

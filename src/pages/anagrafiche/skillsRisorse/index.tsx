@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { API, BASE, SKILLSRISORSE, V1 } from "../../../utils/constants";
-import { RootState, fetchSkillResource, useAppDispatch } from "../../../store";
+import { fetchSkillResource, getSkillResourceData, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,7 +37,8 @@ const SkillRisorse = () => {
 
     const methods = useForm<SkillResources>({ resolver: zodResolver(validationsSchemaResource) });
 
-    const skillResources = useSelector((state: RootState) => state.skillResource.data);
+    const skillResources = useSelector(getSkillResourceData);
+
 
     const filteredResourcesList = skillResources.filter((resource: { resource: { name: string; }; }) =>
         resource.resource.name.toLowerCase().includes(ricercaNome.toLowerCase())

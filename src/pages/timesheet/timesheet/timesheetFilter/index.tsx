@@ -30,10 +30,10 @@ const TimesheetFilterModal = ({
     darkMode,
     filterValues
 }: TimesheetFilterModalProps) => {
-    const uniqueMarkTypes = [...new Set(timesheets.map(item => item.markType))];
-    const uniqueResources = [...new Set(timesheets.map(item => item.resourceId))];
-    const uniqueJobs = [...new Set(timesheets.map(item => item.jobId))];
-    const uniqueOrders = [...new Set(timesheets.map(item => item.orderId))];
+    const uniqueMarkTypes = [...new Set(timesheets.map(item => item.markType).filter(Boolean))];
+    const uniqueResources = [...new Set(timesheets.map(item => item.resource?.name).filter(Boolean))];
+    const uniqueJobs = [...new Set(timesheets.map(item => item.job?.name).filter(Boolean))];
+    const uniqueOrders = [...new Set(timesheets.map(item => item.order?.name).filter(Boolean))];
 
     return (
         <ModalFiltri show={open} className={`fixed inset-0 flex items-center justify-center z-50 ${darkMode ? 'bg-opacity-50' : 'bg-opacity-50'}`}>

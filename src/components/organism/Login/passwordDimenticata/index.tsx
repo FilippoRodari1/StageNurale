@@ -74,7 +74,7 @@ const RecoverPasswordPopup: React.FC<RecoverPasswordPopupProps> = ({ onClose }) 
                     </div>
 
                     <div className="mr-4 ml-4 mb-3 justify-center">
-                        <Button onClick={methods.handleSubmit(onSubmit)}>
+                        <Button onClick={methods.handleSubmit(onSubmit)} className={''}>
                             <div className="w-80 h-12 rounded-l-[15px] rounded-r-[15px] font-bold leading-24 text-center bg-pink-500 text-zinc-50 text-xl hover:bg-pink-400 transition duration-300 transform-none cursor-pointer">Recupera Password</div>
                         </Button>
                     </div>

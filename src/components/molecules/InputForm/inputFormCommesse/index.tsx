@@ -22,7 +22,7 @@ const InputFormCommesse = ({ title, name, jobs, className }: Props) => {
                     {...register(name)}
                     className={`appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-400 rounded-md pl-2 ${className}`}
                 >
-                    <option value="" disabled selected>Commessa</option>
+                    <option value="" disabled selected>Commesse</option>
                     {jobs.map((job) => (
                         <option key={job.id} value={job.code}>
                             {job.code}

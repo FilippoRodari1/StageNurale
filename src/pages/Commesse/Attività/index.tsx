@@ -193,7 +193,7 @@ const AttivitaPage = () => {
             <Navbar name="Attività"/> 
 
             <div className="w-full flex justify-between items-center mt-10 mb-1 mx-4">
-                <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => handleModalOpen()}>+ Aggiungi nuova </button> {/* Bottone aggiornato per le attività */}
+                <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => handleModalOpen()}>+ Aggiungi nuova </button>
                 <div className="flex">
                     <input type="text" placeholder="Cerca attività" className="px-12 py-1 border text-left border-gray-800 rounded-lg mb-2 mr-4" value={ricercaNome} onChange={handleRicercaNomeChange} />
                     <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2 mr-4" onClick={handleFilterSubmit}>Cerca</button>

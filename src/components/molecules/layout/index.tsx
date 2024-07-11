@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import SideBar from '../sideBar';
 import IconSvg from '../../iconsSvg';
-import { HOME, COMMESSE, SKILLS,  LOGIN, ATTIVITA, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE, TIMESHEET, REPORT, ORDERS, RESOURCES, SUPPLIERS, CUSTOMERS} from '../../../utils/constants';
+import { HOME, COMMESSE, SKILLS, LOGIN, ATTIVITA, FATTURADIACQUISTO, FATTURADIACQUISTOATTIVITA, FATTUREVENDITA, SCADENZE, PIANIFICAZIONE, SKILLSRISORSE, TIPIDIPAGAMENTO, UTENTI, INSERIMENTOVELOCE, TIMESHEET, REPORT, ORDERS, RESOURCES, SUPPLIERS, CUSTOMERS } from '../../../utils/constants';
 
 const SIDEBAR = (isDarkMode: boolean) => [
-    { name: 'Home', icon: <IconSvg name="home"/>, link: HOME, className: 'text-pink-500' },
-    {name: 'Inserimento Veloce', icon: <IconSvg name="risorse"/>, link: INSERIMENTOVELOCE },
+    { name: 'Home', icon: <IconSvg name="home" />, link: HOME, className: 'text-pink-500' },
+    { name: 'Inserimento Veloce', icon: <IconSvg name="risorse" />, link: INSERIMENTOVELOCE },
     { 
         name: 'Commesse', 
         icon: <IconSvg name="tipoDiPagamento" color={isDarkMode ? 'white' : 'black'} />, 
@@ -20,7 +20,7 @@ const SIDEBAR = (isDarkMode: boolean) => [
         name: 'Anagrafiche', 
         icon: <IconSvg name="clienti" color={isDarkMode ? 'white' : 'black'} />, 
         sublinks: [
-            { name: 'Clienti', link: CUSTOMERS},
+            { name: 'Clienti', link: CUSTOMERS },
             { name: 'Fornitori', link: SUPPLIERS },
             { name: 'Risorse', link: RESOURCES },
             { name: 'Skills delle risorse', link: SKILLSRISORSE }
@@ -93,14 +93,14 @@ const Layout = () => {
 
     return (
         <div className={`flex h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-        <div className={`transition-all duration-300 h-screen ${isSidebarOpen ? 'w-full sm:w-64' : 'w-16'} ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border-solid border-2 flex flex-col relative`}>
+            <div className={`transition-all duration-300 h-screen ${isSidebarOpen ? 'w-full sm:w-64' : 'w-16'} ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border-solid border-2 flex flex-col relative`}>
                 {isSidebarOpen ? (
                     <img src={isDarkMode ? darkModeImage : lightModeImage} className="h-[95px] p-[20.76px_20.8px] mt-2" />
                 ) : (
                     <img src={logo} className="h-[50px] mt-6 mx-auto" />
                 )}
                 <hr className={`border-solid ${isDarkMode ? 'border-white' : 'border-black'} ml-8 mr-8`} />
-                <div className="flex-grow overflow-y-auto  custom-scrollbar ">
+                <div className="flex-grow overflow-y-auto custom-scrollbar">
                     <SideBar 
                         links={SIDEBAR(isDarkMode)} 
                         currentLink={location.pathname} 

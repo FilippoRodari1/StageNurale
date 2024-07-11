@@ -27,7 +27,7 @@ const CommessePage = () => {
     const [filteredCommesse, setFilteredCommesse] = useState<Jobs[]>([]);
     const [ricercaNome, setRicercaNome] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [filterValues, setFilterValues] = useState({ codice: '', cliente: '', descrizione: '' });
+    const [filterValues, setFilterValues] = useState({ code: '', customer: '', description: '' });
     const [isDarkMode] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [errorDetails, setErrorDetails] = useState('');
@@ -133,16 +133,16 @@ const CommessePage = () => {
         setIsFilteredModalOpen(false);
 
         const filtered = commesse.filter((commessa: Jobs) => {
-            const codiceMatch = filterValues.codice.trim().length === 0 || commessa.code.toLowerCase().includes(filterValues.codice.toLowerCase());
-            const clienteMatch = filterValues.cliente.trim().length === 0 || commessa.customer.name.toLowerCase().includes(filterValues.cliente.toLowerCase());
-            const descrizioneMatch = filterValues.descrizione.trim().length === 0 || commessa.description.toLowerCase().includes(filterValues.descrizione.toLowerCase());
+            const codiceMatch = filterValues.code.trim().length === 0 || commessa.code.toLowerCase().includes(filterValues.code.toLowerCase());
+            const clienteMatch = filterValues.customer.trim().length === 0 || commessa.customer.name.toLowerCase().includes(filterValues.customer.toLowerCase());
+            const descrizioneMatch = filterValues.description.trim().length === 0 || commessa.description.toLowerCase().includes(filterValues.description.toLowerCase());
             return codiceMatch && clienteMatch && descrizioneMatch;
         });
         setFilteredCommesse(filtered);
     };
 
     const removeFilterSubmit = () => {
-        setFilterValues({ codice: '', cliente: '', descrizione: '' });
+        setFilterValues({ code: '', customer: '', description: '' });
         setRicercaNome('');
         setIsFilteredModalOpen(false);
     };

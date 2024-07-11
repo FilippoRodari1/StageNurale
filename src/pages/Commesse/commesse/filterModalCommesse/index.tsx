@@ -7,7 +7,7 @@ interface FilterModalProps {
     open: boolean;
     onClose: () => void;
     commesse: Jobs[];
-    filterValues: { codice: string; cliente: string; descrizione: string };
+    filterValues: { code: string; customer: string; description: string };
     handleFilterChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     handleFilterSubmit: () => void;
     removeFilterSubmit: () => void;
@@ -32,7 +32,7 @@ const FilterModalCommesse = ({
                     <InputForm2
                         type="text"
                         name="code"
-                        value={filterValues.codice}
+                        value={filterValues.code}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
                         title={"Codice"} 
@@ -42,8 +42,8 @@ const FilterModalCommesse = ({
                 <div className="mb-4">
                     <InputForm2
                         type="text"
-                        name="customerId"
-                        value={filterValues.cliente}
+                        name="customer"
+                        value={filterValues.customer}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
                         title={"Cliente"} 
@@ -54,7 +54,7 @@ const FilterModalCommesse = ({
                     <InputForm2
                         type="text"
                         name="description"
-                        value={filterValues.descrizione}
+                        value={filterValues.description}
                         onChange={handleFilterChange}
                         className="w-full px-3 py-2 border rounded" 
                         title={"Descrizione"} 
@@ -62,10 +62,10 @@ const FilterModalCommesse = ({
                     />
                 </div>
                 <div className="justify-center text-center mt-2">
-                        <button onClick={removeFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 mr-4 ${darkMode ? 'bg-gray-500 text-white' : 'bg-gray-500 text-white'}`}>Svuota Filtri</button>
-                        <button onClick={handleFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 ${darkMode ? 'bg-pink-500 text-white' : 'bg-pink-500 text-white'}`}>Applica</button>
-                    </div>
+                    <button onClick={removeFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 mr-4 ${darkMode ? 'bg-gray-500 text-white' : 'bg-gray-500 text-white'}`}>Svuota Filtri</button>
+                    <button onClick={handleFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 ${darkMode ? 'bg-pink-500 text-white' : 'bg-pink-500 text-white'}`}>Applica</button>
                 </div>
+            </div>
         </ModalFiltri>
     );
 };

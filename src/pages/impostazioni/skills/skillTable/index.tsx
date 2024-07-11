@@ -31,7 +31,7 @@ const SkillTable= ({ currentSkills, handleModalOpen, handleDeleteConfirmation, i
                 {currentSkills.map((skills, index) => (
                     <tr key={skills.id} className={`${index % 2 === 0 ? `${isDarkMode ? ' bg-gray-500' : 'bg-gray-100'}` : " " }`}>
                         <td className="text-left px-4 py-2 ">{skills.name}</td>
-                        <td className="text-left px-32 py-2  ">{skills.skillType}</td>
+                        <td className="text-left px-36 py-2  ">{skills.skillType}</td>
                         <td className="text-left px-10 py-2 ">{skills.note}</td>
                         <td className="text-right px-8 py-2">
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(skills.id!)}><IconSvg name="modifica" /></button>

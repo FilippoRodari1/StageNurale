@@ -154,8 +154,21 @@ export const validationsSchemaSkills = z.object({
 });
 
 export const validationsSchemaScadenze = z.object({
-
-});
+    id: z.number(),
+    purchasesInvoiceId: z.number(),
+    purchasesInvoice: z.object({
+      name: z.string(),
+    }),
+    salesInvoiceId: z.number(),
+    grossValue: z.number(),
+    scheduledDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+      message: "Invalid date format",
+    }),
+    paymentDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+      message: "Invalid date format",
+    }),
+    note: z.string(),
+  });
 
 export const validationsSchemaTimesheet = z.object({
     id: z.number(),           

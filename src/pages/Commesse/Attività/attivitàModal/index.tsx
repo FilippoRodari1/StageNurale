@@ -27,7 +27,6 @@ const ActivitiesModal = ({ open, handleModalClose, handleSave, editingId, darkMo
     const orders = useSelector(getOrdersData);
     const resources = useSelector(getResourceData);
 
-
     useEffect(() => {
         dispatch(fetchCommesse());
     }, [dispatch]);

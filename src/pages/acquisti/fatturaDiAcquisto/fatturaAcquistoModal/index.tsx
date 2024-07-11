@@ -58,7 +58,7 @@ const FatturaAcquistoModal = ({ open, handleModalClose, handleSave, editingId, d
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(handleFormSubmit)}>
                     <h2 className={`text-xl font-extrabold font-lato mb-4 mx-4 text-left ${darkMode ? 'text-pink-500' : 'text-pink-500'}`}>
-                        {editingId ? 'Modifica Skill per la risorsa' : 'Aggiungi nuova Skill per la risorsa'}
+                        {editingId ? 'Modifica Fattura di acquisto ' : 'Aggiungi nuova fattura acquisto'}
                     </h2>
                     <div className="h-full w-full">
                         <div className={`h-full flex flex-col border border-solid rounded-lg ${darkMode ? 'border-gray-600' : 'border-gray-400'}`}>

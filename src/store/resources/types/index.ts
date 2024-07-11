@@ -5,10 +5,11 @@ export interface QueryParams {
 }
 
 export interface Resources {
+    id: number;
     level: any;
     skill: any;
     typeOfPaymentId: any;
-    id: number;
+    resourceId: number;
     firstName : string,
     lastName: string,
     hourCost: number,

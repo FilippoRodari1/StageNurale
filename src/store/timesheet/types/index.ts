@@ -10,8 +10,17 @@ export interface Timesheet {
     endDate: string;
     id: number
     resourceId: number
+    resource : {
+        name: string;
+    }
     orderId: number
+    order: {
+        name: string;
+    }
     jobId : number
+    job:{
+        name: string;
+    }
     operationDate: string
     workedHours: number
     markType : string

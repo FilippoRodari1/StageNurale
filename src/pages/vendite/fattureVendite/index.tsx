@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API, BASE, FATTUREVENDITA, V1 } from "../../../utils/constants";
-import { fetchFatturaAcquisti, fetchFattureVendita, getFattureVenditaData, useAppDispatch } from "../../../store";
+import { fetchFattureVendita, getFattureVenditaData, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -79,7 +79,7 @@ const FatturaVendita = () => {
                 throw new Error(`error status: ${response.status}`);
             }
             const data = await response.json();
-            dispatch(fetchFatturaAcquisti());
+            dispatch(fetchFattureVendita());
             return data;
         } catch (error: any) {
             console.error("Error updating data:", error);
