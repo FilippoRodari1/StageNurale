@@ -175,7 +175,7 @@ const Risorse = () => {
                     <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => setIsFilteredModalOpen(true)}>Filtri</button>
                 </div>
             </div>
-            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4" style={{ height: 'calc(100% - 180px)' }}>
+            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4 mt-3" style={{ height: 'calc(100% - 180px)' }}>
                 <div className="overflow-auto h-full font-lato">
                     {isFilteredModalOpen && (
                         <FilterModal

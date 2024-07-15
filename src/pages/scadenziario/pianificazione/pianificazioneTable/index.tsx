@@ -32,7 +32,7 @@ const PianificazioneTable = ({ currentPianificazione, handleModalOpen, handleDel
                     <th className="text-left px-4 py-2">
                         <button className="flex items-center">Giorno fisso</button>
                     </th>
-                    <th className="text-left px-4 py-2">
+                    <th className="text-left px-6 py-2">
                         <button className="flex items-center">Totale</button>
                     </th>
                     <th className="text-left px-4 py-2">

@@ -33,8 +33,7 @@ const SkillFilter = ({ open, onClose, skills , filterValues, handleFilterChange,
                         <option value="">Tipo di skill</option>
                         {[...new Set(skills?.map((skills) => skills.skillType))].map((skillType) => (
                             <option key={skillType} value={skillType}>{skillType}</option>
-                        ))}
-                       
+                        ))} 
                     </select>
                     <div className="justify-center text-center mt-2">
                         <button onClick={removeFilterSubmit} className={`text-xl font-bold font-lato py-1 px-2 rounded-lg mb-1 mr-4 ${darkMode ? 'bg-gray-500 text-white' : 'bg-gray-500 text-white'}`}>Svuota Filtri</button>

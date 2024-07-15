@@ -31,7 +31,7 @@ const SupplierTable= ({ currentSuppliers, handleModalOpen, handleDeleteConfirmat
                 {currentSuppliers.map((suppliers, index) => (
                     <tr key={suppliers.id} className={`${index % 2 === 0 ? `${isDarkMode ? ' bg-gray-500' : 'bg-gray-100'}` : " " }`}>
                         <td className="text-left px-4 py-2 ">{suppliers.name}</td>
-                        <td className="text-left px-32 py-2  ">{suppliers.typeOfPayment.name}</td>
+                        <td className="text-left px-44 py-2  ">{suppliers.typeOfPayment.name}</td>
                         <td className="text-left px-10 py-2 ">{suppliers.note}</td>
                         <td className="text-right px-8 py-2">
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(suppliers.id!)}><IconSvg name="modifica" /></button>

@@ -1,7 +1,7 @@
 import { LOADING } from "../../types";
 
 export interface QueryParams {
-    id?: number;
+    skillType?: number;
 }
 
 export interface Skills {

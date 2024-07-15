@@ -30,7 +30,7 @@ const CustomerTable = ({ currentCustomers, setViewingUserId, handleModalOpen, ha
                 {currentCustomers.map((customer, index) => (
                     <tr key={customer.id} className={`${index % 2 === 0 ? 'bg-gray-100 ' : ''}`}>
                         <td className="text-left px-4 py-2 ">{customer.name}</td>
-                        <td className="text-left px-32 py-2  ">{customer.typeOfPayment.name}</td>
+                        <td className="text-left px-40 py-2  ">{customer.typeOfPayment.name}</td>
                         <td className="text-left px-10 py-2 ">{customer.note}</td>
                         <td className="text-right px-8 py-2">
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => setViewingUserId(customer.id!)}><IconSvg name="occhio" /></button>

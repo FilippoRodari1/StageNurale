@@ -24,7 +24,7 @@ const SkillTable= ({ currentSkills, handleModalOpen, handleDeleteConfirmation, i
                     <th className="text-left px-10 py-2">
                         <button className="flex items-center">Note</button>
                     </th>
-                    <th className="text-right px-16 py-2">Azioni</th>
+                    <th className="text-right px-12 py-2">Azioni</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,7 @@ const SkillTable= ({ currentSkills, handleModalOpen, handleDeleteConfirmation, i
                         <td className="text-left px-4 py-2 ">{skills.name}</td>
                         <td className="text-left px-36 py-2  ">{skills.skillType}</td>
                         <td className="text-left px-10 py-2 ">{skills.note}</td>
-                        <td className="text-right px-8 py-2">
+                        <td className="text-right px-6 py-2">
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleModalOpen(skills.id!)}><IconSvg name="modifica" /></button>
                             <button className="text-white px-2 py-1 rounded mr-2" onClick={() => handleDeleteConfirmation(skills)}><IconSvg name="delete" /></button>
                         </td>

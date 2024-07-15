@@ -131,7 +131,7 @@ const FatturaAcquistoAttività = () => {
             <div className="w-full flex justify-between items-center mt-10 mb-1 mx-4">
                 <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => handleModalOpen()}>+ Aggiungi nuovo </button>
             </div>
-            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4" style={{ height: 'calc(100% - 180px)' }}>
+            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4 mt-3" style={{ height: 'calc(100% - 180px)' }}>
                 <div className="overflow-auto h-full font-lato">
                     {isDeleteModalOpen && resourceToDelete && (
                         <ModalDelete show={isDeleteModalOpen} onClick={() => setIsDeleteModalOpen(false)} className="bg-white rounded-xl p-8 max-w-md w-full flex flex-col items-center justify-center">

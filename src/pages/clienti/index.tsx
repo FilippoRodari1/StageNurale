@@ -28,7 +28,7 @@ const Clienti = () => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isFilteredModalOpen, setIsFilteredModalOpen] = useState(false);
     const [customerToDelete, setCustomerToDelete] = useState<Customers | null>(null);
-    const [filteredCustomers, setFilteredCustomers] = useState<Customers[]>([]);
+    const [_, setFilteredCustomers] = useState<Customers[]>([]);
     const [ricercaNome, setRicercaNome] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [filterValues, setFilterValues] = useState({ name: '', typeOfPayment: '', note: ''});
@@ -176,7 +176,7 @@ const Clienti = () => {
                     <button className="bg-pink-500 text-white text-xl font-bold font-lato py-1 px-4 rounded-lg mb-2" onClick={() => setIsFilteredModalOpen(true)}>Filtri</button>
                 </div>
             </div>
-            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4" style={{ height: 'calc(100% - 180px)' }}>
+            <div className="border-2 border-gray-400 rounded-lg w-full p-1 mx-4 mt-3" style={{ height: 'calc(100% - 180px)' }}>
                 <div className="overflow-auto h-full font-lato">
                     {isFilteredModalOpen && (
                         <FilterModal
@@ -216,16 +216,13 @@ const Clienti = () => {
                             isDarkMode={isDarkMode}
                         />
                     </div> 
-                         
-                    <div>
                     <CustomersModal 
                         open={open} 
                         handleSave={handleSave} 
                         handleModalClose={handleModalClose} 
                         editingId={editingId} 
                         darkMode={isDarkMode} 
-                    />
-                    </div>
+                    />   
                 </div>
                 <div className="flex justify-between items-center ml-64 mt-4">
                     <div></div>
@@ -233,7 +230,7 @@ const Clienti = () => {
                     <div className="flex items-center">
                         <span className="mr-2 font-bold font-lato">Pagina</span>
                         <input type="number" value={currentPage} onChange={(event) => setCurrentPage(Number(event.target.value))} className="border border-gray-800 font-bold font-lato rounded-lg text-center w-12 mx-2" />
-                        <span className="mr-2 font-bold font-lato">di {Math.ceil(filteredCustomers.length / customersPerPage)}</span>
+                        <span className="mr-2 font-bold font-lato">di 4</span>
                         <div className="flex">
                             <button className="bg-gray-300 text-gray-800 px-2 py-1 mr-2 rounded-l-lg" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>{'◁'}</button>
                             <button className="bg-gray-300 text-gray-800 px-2 py-1 rounded-r-lg" onClick={() => paginate(currentPage + 1)} >{'▷'}</button>

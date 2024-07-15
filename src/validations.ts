@@ -157,7 +157,7 @@ export const validationsSchemaScadenze = z.object({
     id: z.number(),
     purchasesInvoiceId: z.number(),
     purchasesInvoice: z.object({
-      name: z.string(),
+        name: z.string(),
     }),
     salesInvoiceId: z.number(),
     grossValue: z.number(),

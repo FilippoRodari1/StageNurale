@@ -29,7 +29,7 @@ const CommessaTable = ({ currentJobs, handleModalOpen, handleDeleteConfirmation,
                     <th className="text-left px-5 py-2">
                         <button className="flex items-center">Data Fine</button>
                     </th>
-                    <th className="text-left px-5 py-2">
+                    <th className="text-left px-3 py-2">
                         <button className="flex items-center">Tipo di Commessa</button>
                     </th>
                     <th className="text-left px-5 py-2">
